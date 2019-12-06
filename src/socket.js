@@ -1,5 +1,4 @@
 //RYANS KILLER SOCKET CODE COPYRIGHT RYAN 5EVER
-
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import io from 'socket.io-client';
 
@@ -7,6 +6,7 @@ import io from 'socket.io-client';
 const socket = io.connect('ws://localhost:7890');
 const SocketContext = createContext(socket);
 
+// eslint-disable-next-line react/prop-types
 export const SocketProvider = ({ children }) => {
   return (
     <SocketContext.Provider value={socket}>
