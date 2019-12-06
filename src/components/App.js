@@ -6,7 +6,6 @@ import Form from './users/Form';
 const reducer = (state, { type, payload }) => {
   switch(type) {
     case 'NAME_SUBMIT_DONE':
-      console.log(state);
       return { ...state, ...payload };
     default:
       return state;
