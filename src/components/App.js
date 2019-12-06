@@ -1,50 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { useSocket, useEmitEvent, useOnEvent } from '../socket';
+import { useEmitEvent, useOnEvent } from '../socket';
 import Form from './users/Form';
+import { reducer } from '../reducers/reducer';
+import JoinRoomForm from './users/JoinRoom';
 
 
-const reducer = (state, { type, payload }) => {
-  switch(type) {
-    case 'NAME_SUBMIT_DONE':
-      return { ...state, ...payload };
-    case 'ROOM_CONNECT_DONE':
-      console.log('connected to', payload);
-      return { ...state, ...payload };
-    default:
-      return state;
-  }
-};
 
 export default function App() {
 
-  // useEmitEvents are triggered by game actions and sent to BE
-  // const nameSocket = useEmitEvent('NAME_SUBMIT');
-  const openDoor = useEmitEvent('ROOM_CONNECT');
-
-  // BE emits stuff based on useEmitEvents
-
-  // UseOnEvent listens to BE emiter
-  // eventState is state
-  // const eventState = useOnEvent(reducer, ['NAME_SUBMIT_DONE']);
+  //Listen for events from the backend that will hit the reducer
   const eventState = useOnEvent(reducer, ['ROOM_CONNECT_DONE']);
 
+  //Actions to send to the backend
+  const startRoom = useEmitEvent('ROOM_CONNECT');
+  const joinRoom = useEmitEvent('ROOM_CONNECT');
 
-
-  // const handleSubmit = (event, data) => {
-  //   event.preventDefault();
-  //   nameSocket({ name: data });
-  // };
-
-  const connectToRoom = (event) => {
+  const handleSubmit = (event, data) => {
     event.preventDefault();
-    openDoor({ room: 'room1' });
-    console.log(eventState);
+    startRoom({ room: data });
+  };
+
+  const handleJoin = (event, data) => {
+    event.preventDefault();
+    joinRoom({ room: data });
   };
 
   return (
     <>
-      <Form handleSubmit={connectToRoom} />
+      <Form handleSubmit={handleSubmit} />
       <span>{eventState.room}</span>
+      <JoinRoomForm handleSubmit={handleJoin} />
 
     </>
   );

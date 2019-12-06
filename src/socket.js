@@ -15,7 +15,7 @@ export const SocketProvider = ({ children }) => {
   );
 };
 
-export const useSocket = () => {    
+export const useSocket = () => {
   const socket = useContext(SocketContext);
   return socket;
 };
@@ -29,7 +29,7 @@ export const useEmitEvent = eventName => {
 
 export const useOnEvent = (reducer, eventNames) => {
   const socket = useSocket();
-  const [state, dispatch] = useReducer(reducer, { name: null });
+  const [state, dispatch] = useReducer(reducer, {});
 
   useEffect(() => {
     eventNames.forEach(eventName => {
