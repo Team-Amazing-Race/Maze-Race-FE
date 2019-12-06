@@ -6,26 +6,25 @@ export const reducer = (state, { type, payload }) => {
         return room.name === payload;
       });
 
-      if(room) {
+      if(state.rooms[room]) {
+
         state.rooms[room].players++;
-      }
-
-      return state;
-    }
-    case 'ROOM_CREATE_DONE': {
-
-      const rooms = state.rooms;
-
-      if(!rooms.find(room => {
-        return room.name === payload;
-      })) {
-
-        rooms.push({ name: payload, players: 1 });
         console.log('entered room', payload);
-        return { ...state, rooms: rooms };
+
+      } else {
+
+        state.rooms.push({ name: payload, players: 1 });
+        console.log('created room', payload);
+
       }
+
       return state;
     }
+    case 'ROOM_DISCONNECT': {
+      console.log('ROOM DISCONNECT');
+      return state;
+    }
+
     default:
       return state;
   }
