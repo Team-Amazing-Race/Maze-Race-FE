@@ -1,10 +1,31 @@
 export const reducer = (state, { type, payload }) => {
   switch(type) {
-    case 'NAME_SUBMIT_DONE':
-      return { ...state, ...payload };
-    case 'ROOM_CONNECT_DONE':
-      console.log('entered room', payload);
-      return { ...state, room: payload };
+    case 'ROOM_JOIN_DONE': {
+
+      const room = state.rooms.findIndex(room => {
+        return room.name === payload;
+      });
+
+      if(room) {
+        state.rooms[room].players++;
+      }
+
+      return state;
+    }
+    case 'ROOM_CREATE_DONE': {
+
+      const rooms = state.rooms;
+
+      if(!rooms.find(room => {
+        return room.name === payload;
+      })) {
+
+        rooms.push({ name: payload, players: 1 });
+        console.log('entered room', payload);
+        return { ...state, rooms: rooms };
+      }
+      return state;
+    }
     default:
       return state;
   }

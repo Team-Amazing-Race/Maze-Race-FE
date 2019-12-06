@@ -15,7 +15,7 @@ const JoinRoomForm = ({ handleJoin }) => {
 };
 
 JoinRoomForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  handleJoin: PropTypes.func.isRequired
 };
 
 export default JoinRoomForm;

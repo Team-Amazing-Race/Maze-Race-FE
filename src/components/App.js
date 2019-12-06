@@ -9,15 +9,16 @@ import JoinRoomForm from './users/JoinRoom';
 export default function App() {
 
   //Listen for events from the backend that will hit the reducer
-  const eventState = useOnEvent(reducer, ['ROOM_CONNECT_DONE']);
+  const eventState = useOnEvent(reducer, ['ROOM_CREATE_DONE', 'ROOM_JOIN_DONE']);
 
   //Actions to send to the backend
-  const startRoom = useEmitEvent('ROOM_CONNECT');
-  const joinRoom = useEmitEvent('ROOM_CONNECT');
+  const createRoom = useEmitEvent('ROOM_CREATE');
+  const joinRoom = useEmitEvent('ROOM_JOIN');
 
   const handleSubmit = (event, data) => {
     event.preventDefault();
-    startRoom({ room: data });
+    createRoom({ room: data });
+
   };
 
   const handleJoin = (event, data) => {
@@ -25,11 +26,28 @@ export default function App() {
     joinRoom({ room: data });
   };
 
+  const roomDisplay = eventState.rooms.map(room => {
+    return (
+      <li key={name}>
+        <p>Name: {room.name}</p>
+        <p>Players: {room.players}</p>
+      </li>
+    );
+  });
+
+
   return (
     <>
+      <p>make a room ya dingus</p>
       <Form handleSubmit={handleSubmit} />
-      <span>{eventState.room}</span>
-      <JoinRoomForm handleSubmit={handleJoin} />
+
+      <ul>
+        {roomDisplay}
+      </ul>
+
+      <br />
+      <p>join a room ya idjit</p>
+      <JoinRoomForm handleJoin={handleJoin} />
 
     </>
   );
