@@ -9,19 +9,12 @@ import JoinRoomForm from './users/JoinRoom';
 export default function App() {
 
   //Listen for events from the backend that will hit the reducer
-  const eventState = useOnEvent(reducer, ['ROOM_CREATE_DONE', 'ROOM_JOIN_DONE']);
+  const eventState = useOnEvent(reducer, ['ROOM_JOIN_DONE']);
 
   //Actions to send to the backend
-  const createRoom = useEmitEvent('ROOM_CREATE');
-  const joinRoom = useEmitEvent('ROOM_JOIN');
+  const joinRoom = useEmitEvent('ROOM_JOIN', 'ROOM_DISCONNECT');
 
   const handleSubmit = (event, data) => {
-    event.preventDefault();
-    createRoom({ room: data });
-
-  };
-
-  const handleJoin = (event, data) => {
     event.preventDefault();
     joinRoom({ room: data });
   };
@@ -47,7 +40,7 @@ export default function App() {
 
       <br />
       <p>join a room ya idjit</p>
-      <JoinRoomForm handleJoin={handleJoin} />
+      <JoinRoomForm handleJoin={handleSubmit} />
 
     </>
   );
