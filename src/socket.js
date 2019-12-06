@@ -3,8 +3,8 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import io from 'socket.io-client';
 
-const socket = io.connect('http://192.168.1.213:7890');
-// const socket = io.connect('ws://localhost:7890');
+// const socket = io.connect('http://192.168.1.213:7890');
+const socket = io.connect('ws://localhost:7890');
 const SocketContext = createContext(socket);
 
 export const SocketProvider = ({ children }) => {
