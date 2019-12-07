@@ -15,7 +15,7 @@ export const reducer = (state, { type, payload }) => {
       })) {
         const rooms = state.rooms.map(currentRoom => {
           if(currentRoom.name === room) {
-            return { ...currentRoom, players: [...state.currentRoom.players, { name: name }] };
+            return { ...currentRoom, players: [...currentRoom.players, { name: name }] };
           } else {
             return currentRoom;
           }
