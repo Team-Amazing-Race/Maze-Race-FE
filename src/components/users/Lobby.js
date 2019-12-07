@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Lobby = ({ name, players }) => {
-
   return (
     <>
       <p>Name: {name}</p>

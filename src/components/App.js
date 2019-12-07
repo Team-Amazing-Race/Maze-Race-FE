@@ -3,6 +3,7 @@ import { useEmitEvent, useOnEvent } from '../socket';
 import Form from './users/Form';
 import { reducer } from '../reducers/reducer';
 import JoinRoomForm from './users/JoinRoom';
+import LobbyList from './users/LobbyList';
 
 
 
@@ -17,16 +18,8 @@ export default function App() {
   const handleSubmit = (event, data) => {
     event.preventDefault();
     joinRoom({ room: data });
+    console.log(eventState.rooms);
   };
-
-  const roomDisplay = eventState.rooms.map(room => {
-    return (
-      <li key={name}>
-        <p>Name: {room.name}</p>
-        <p>Players: {room.players}</p>
-      </li>
-    );
-  });
 
 
   return (
@@ -34,9 +27,7 @@ export default function App() {
       <p>make a room ya dingus</p>
       <Form handleSubmit={handleSubmit} />
 
-      <ul>
-        {roomDisplay}
-      </ul>
+      <LobbyList rooms={eventState.rooms} />
 
       <br />
       <p>join a room ya idjit</p>

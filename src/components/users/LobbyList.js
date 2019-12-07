@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Lobby from './Lobby';
 
 const LobbyList = ({ rooms }) => {
+  console.log(rooms);
   const roomDisplay = rooms.map(room => {
     return (
-      <li key={name}>
-        <p>Name: {room.name}</p>
-        <p>Players: {room.players}</p>
+      <li key={room.name}>
+        <Lobby name={room.name} players={room.players} />
       </li>
     );
   });
@@ -15,6 +16,7 @@ const LobbyList = ({ rooms }) => {
     <ul>
       {roomDisplay}
     </ul>
+
   );
 };
 
