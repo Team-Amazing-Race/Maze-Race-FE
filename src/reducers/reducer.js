@@ -1,24 +1,20 @@
 export const reducer = (state, { type, payload }) => {
   switch(type) {
     case 'ROOM_JOIN_DONE': {
-
-      const room = state.rooms.findIndex(room => {
+      if(state.rooms.some(room => {
         return room.name === payload;
-      });
-
-      if(state.rooms[room]) {
-
-        state.rooms[room].players++;
-        console.log('entered room', payload);
-
-      } else {
-
-        state.rooms.push({ name: payload, players: 1 });
-        console.log('created room', payload);
-
+      })) {
+        const rooms = state.rooms.map(room => {
+          if(room.name === payload) {
+            return { ...room, players: room.players + 1 };
+          } else {
+            return room;
+          }
+        });
+        return { ...state, rooms };
       }
 
-      return state;
+      return { ...state, rooms: [...state.rooms, { name: payload, players: 1 }] };
     }
     case 'ROOM_DISCONNECT': {
       console.log('ROOM DISCONNECT');
