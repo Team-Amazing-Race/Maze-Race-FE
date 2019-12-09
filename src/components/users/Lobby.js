@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Lobby = ({ name, players }) => {
-  console.log(players);
   const playerString = players.reduce((acc, val) => {
     acc += val.name + ', ';
     return acc;

@@ -15,7 +15,7 @@ export const reducer = (state, { type, payload }) => {
       })) {
         const rooms = state.rooms.map(currentRoom => {
           if(currentRoom.name === room) {
-            return { ...currentRoom, players: [...currentRoom.players, { name: name }] };
+            return { ...currentRoom, players: [...currentRoom.players, { name: name, xPos: 0, yPos: 0 }] };
           } else {
             return currentRoom;
           }
@@ -29,7 +29,11 @@ export const reducer = (state, { type, payload }) => {
           {
             name: room,
             players: [
-              { name: name }
+              {
+                name: name,
+                xPos: 0,
+                yPos: 0,
+              }
             ]
           }
         ]
@@ -40,8 +44,61 @@ export const reducer = (state, { type, payload }) => {
       return state;
     }
     case 'ENTER_NAME_DONE':
-      console.log('here we are');
       return { ...state, name: payload };
+
+    case 'MOVE_PLAYER_DONE': {
+      const rooms = state.rooms;
+      console.log( rooms, 'fadfa');
+      console.log(payload, 'sucks');
+      const room = rooms.find(room => {
+        return room.players.some(foundPlayer => {
+          return foundPlayer.name === payload.name;
+        }) === true;
+      });
+
+      const player = room.players.find(person =>{
+        return person.name === payload.name;
+      });
+
+      const newX = () => {
+        if(payload.dir === 'right') {
+          return player.xPos + 1;
+        }
+        if(payload.dir === 'left') {
+          return player.xPos - 1;
+        }
+        return player.xPos;
+      };
+
+      const newY = () => {
+        if(payload.dir === 'up') {
+          return player.yPos + 1;
+        }
+        if(payload.dir === 'down') {
+          return player.yPos - 1;
+        }
+        return player.yPos;
+      };
+
+      const newRooms = state.rooms.map(openRoom => {
+        if(openRoom.players.some(person => {
+          console.log(person, player, 'person');
+          return person.name === player.name;
+        })) {
+          const newPlayers = openRoom.players.map(person => {
+            if(person.name === player.name) {
+              return { ...person, xPos: newX(), yPos: newY() };
+            } else {
+              return person;
+            }
+          });
+          return { ...openRoom, players: newPlayers };
+        }
+        return openRoom;
+      });
+
+      return { ...state, rooms: newRooms };
+    }
     default:
       return state;
   }
