@@ -50,8 +50,6 @@ export const reducer = (state, { type, payload }) => {
       const playerToMove = state.name;
       const rooms = state.rooms;
 
-      console.log(state);
-
       const room = rooms.find(room => {
         return room.players.some(foundPlayer => {
           return foundPlayer.name === playerToMove;

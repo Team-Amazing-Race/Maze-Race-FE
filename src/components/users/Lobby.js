@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Lobby = ({ name, players }) => {
   const playerString = players.reduce((acc, val) => {
-    acc += val.name + ', ';
+    acc += val.name + `${val.xPos},${val.yPos}` + '\n';
     return acc;
   }, '');
   return (
