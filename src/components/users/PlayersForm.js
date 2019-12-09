@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Form = ({ handleSubmit }) => {
+const PlayersForm = ({ handleSubmit }) => {
 
   const [players, setPlayers] = useState('');
 
@@ -14,8 +14,8 @@ const Form = ({ handleSubmit }) => {
 
 };
 
-Form.propTypes = {
+PlayersForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 };
 
-export default Form;
+export default PlayersForm;

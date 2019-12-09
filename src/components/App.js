@@ -5,6 +5,10 @@ import { reducer } from '../reducers/reducer';
 import JoinRoomForm from './users/JoinRoom';
 import LobbyList from './users/LobbyList';
 import EnterName from './users/EnterName';
+import PlayerSelection from './users/PlayerSelection';
+import PlayersList from './users/PlayerList';
+import PlayersForm from './users/PlayersForm';
+import ResultMessage from './users/ResultMessage';
 
 
 
@@ -20,13 +24,26 @@ export default function App() {
   const handleSubmit = (event, data) => {
     event.preventDefault();
     joinRoom({ room: data, name: eventState.name });
-    console.log(eventState.rooms);
   };
 
   const handleName = (event, data) => {
     event.preventDefault();
     enterName({ name: data });
-    console.log(eventState);
+  };
+
+  const props = { 
+    colors: ['black', 'red', 'blue', 'green'], 
+    symbols: ['Q', 'Z', 'W', 'P'],
+    players: [{
+      name: 'Jose',
+      color: 'red',
+      symbol: '!'
+    }, {
+      name: 'Dylan',
+      color: 'blue',
+      symbol: '!'
+    }],
+    winner: 'Dylan'
   };
 
 
@@ -42,6 +59,10 @@ export default function App() {
       <p>join a room ya idjit</p>
       <JoinRoomForm handleJoin={handleSubmit} />
 
+      <PlayersForm handleSubmit={handleSubmit} />
+      <PlayerSelection handleSubmit={handleSubmit} colors={props.colors} symbols={props.symbols} />
+      <PlayersList players={props.players} />
+      <ResultMessage handleSubmit={handleSubmit} name={props.players[0].name} winner={props.winner} />
     </>
   );
 }
