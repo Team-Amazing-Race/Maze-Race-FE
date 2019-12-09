@@ -5,9 +5,6 @@ import { reducer } from '../reducers/reducer';
 import JoinRoomForm from './users/JoinRoom';
 import LobbyList from './users/LobbyList';
 import EnterName from './users/EnterName';
-import Player from './users/Player';
-
-
 
 
 export default function App() {
@@ -23,6 +20,7 @@ export default function App() {
   const handleSubmit = (event, data) => {
     event.preventDefault();
     joinRoom({ room: data, name: eventState.name });
+    console.log(eventState);
   };
 
   const handleName = (event, data) => {
@@ -30,30 +28,31 @@ export default function App() {
     enterName({ name: data });
   };
 
-  const handleKeyDown = (e) => {
-    if(e.key === 'ArrowUp') {
-      console.log('playerMove', eventState);
-      movePlayer({ dir: 'up', name: eventState.name });
-    }
-    if(e.key === 'ArrowDown') {
-      movePlayer({ dir: 'down', name: eventState.name });
-    }
-    if(e.key === 'ArrowRight') {
-      movePlayer({ dir: 'right', name: eventState.name });
-    }
-    if(e.key === 'ArrowLeft') {
-      movePlayer({ dir: 'left', name: eventState.name });
-    }
-  };
+  useEffect(() => {
+    window.addEventListener('keydown', (event) => {
+      const keyName = event.key;
+      if(keyName === 'ArrowUp') {
+        movePlayer({ dir: 'up' });
+      }
+      if(keyName === 'ArrowDown') {
+        movePlayer({ dir: 'down' });
+      }
+      if(keyName === 'ArrowRight') {
+        movePlayer({ dir: 'right' });
+      }
+      if(keyName === 'ArrowLeft') {
+        movePlayer({ dir: 'left' });
+      }
+    });
+  }, []);
 
   return (
-    <>
+    <div>
       <EnterName handleName={handleName} />
       <p>make a room ya dingus</p>
       <Form handleSubmit={handleSubmit} />
       <LobbyList rooms={eventState.rooms} />
       <br />
-      <Player handleKeyDown={handleKeyDown} color={'red'} top={'100px'} left={'100px'}/>
-    </>
+    </div>
   );
 }

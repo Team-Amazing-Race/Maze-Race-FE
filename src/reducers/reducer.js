@@ -47,17 +47,19 @@ export const reducer = (state, { type, payload }) => {
       return { ...state, name: payload };
 
     case 'MOVE_PLAYER_DONE': {
+      const playerToMove = state.name;
       const rooms = state.rooms;
-      console.log( rooms, 'fadfa');
-      console.log(payload, 'sucks');
+
+      console.log(state);
+
       const room = rooms.find(room => {
         return room.players.some(foundPlayer => {
-          return foundPlayer.name === payload.name;
+          return foundPlayer.name === playerToMove;
         }) === true;
       });
 
-      const player = room.players.find(person =>{
-        return person.name === payload.name;
+      const player = room.players.find(person => {
+        return person.name === playerToMove;
       });
 
       const newX = () => {
@@ -82,7 +84,6 @@ export const reducer = (state, { type, payload }) => {
 
       const newRooms = state.rooms.map(openRoom => {
         if(openRoom.players.some(person => {
-          console.log(person, player, 'person');
           return person.name === player.name;
         })) {
           const newPlayers = openRoom.players.map(person => {
