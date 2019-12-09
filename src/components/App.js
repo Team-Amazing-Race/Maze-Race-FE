@@ -33,15 +33,10 @@ export default function App() {
   return (
     <>
       <EnterName handleName={handleName} />
-      <span>Your name is {eventState.name}</span>
       <p>make a room ya dingus</p>
       <Form handleSubmit={handleSubmit} />
       <LobbyList rooms={eventState.rooms} />
-
       <br />
-      <p>join a room ya idjit</p>
-      <JoinRoomForm handleJoin={handleSubmit} />
-
     </>
   );
 }
