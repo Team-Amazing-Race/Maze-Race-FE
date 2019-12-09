@@ -47,8 +47,9 @@ export const reducer = (state, { type, payload }) => {
       return { ...state, name: payload };
 
     case 'MOVE_PLAYER_DONE': {
-      const playerToMove = state.name;
+      const playerToMove = payload.name;
       const rooms = state.rooms;
+
 
       const room = rooms.find(room => {
         return room.players.some(foundPlayer => {

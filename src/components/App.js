@@ -28,23 +28,28 @@ export default function App() {
     enterName({ name: data });
   };
 
+  const keyDownListener = (event) => {
+    const keyName = event.key;
+    if(keyName === 'ArrowUp') {
+      movePlayer({ dir: 'up', name: eventState.name });
+    }
+    if(keyName === 'ArrowDown') {
+      movePlayer({ dir: 'down', name: eventState.name });
+    }
+    if(keyName === 'ArrowRight') {
+      movePlayer({ dir: 'right', name: eventState.name });
+    }
+    if(keyName === 'ArrowLeft') {
+      movePlayer({ dir: 'left', name: eventState.name });
+    }
+  };
+
   useEffect(() => {
-    window.addEventListener('keydown', (event) => {
-      const keyName = event.key;
-      if(keyName === 'ArrowUp') {
-        movePlayer({ dir: 'up' });
-      }
-      if(keyName === 'ArrowDown') {
-        movePlayer({ dir: 'down' });
-      }
-      if(keyName === 'ArrowRight') {
-        movePlayer({ dir: 'right' });
-      }
-      if(keyName === 'ArrowLeft') {
-        movePlayer({ dir: 'left' });
-      }
-    });
-  }, []);
+    window.addEventListener('keydown', keyDownListener);
+    return () => {
+      window.removeEventListener('keydown', keyDownListener);
+    };
+  });
 
   return (
     <div>
