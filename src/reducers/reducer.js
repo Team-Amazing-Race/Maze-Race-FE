@@ -20,7 +20,7 @@ export const reducer = (state, { type, payload }) => {
             return currentRoom;
           }
         });
-        return { ...state, rooms, inRoom: room };
+        return { ...state, rooms };
       }
 
       return {
@@ -36,9 +36,13 @@ export const reducer = (state, { type, payload }) => {
               }
             ]
           }
-        ], inRoom: room
+        ]
       };
     }
+
+    case 'ROOM_JOIN_PRIVATE':
+      return { ...state, inRoom: payload.room };
+
     case 'ROOM_DISCONNECT': {
       console.log('ROOM DISCONNECT');
       return state;

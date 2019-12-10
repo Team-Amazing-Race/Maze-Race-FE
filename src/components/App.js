@@ -10,7 +10,11 @@ import EnterName from './users/EnterName';
 export default function App() {
 
   //Listen for events from the backend that will hit the reducer
-  const eventState = useOnEvent(reducer, ['ROOM_JOIN_DONE', 'ENTER_NAME_DONE', 'MOVE_PLAYER_DONE']);
+  const eventState = useOnEvent(reducer,
+    ['ROOM_JOIN_DONE',
+      'ENTER_NAME_DONE',
+      'MOVE_PLAYER_DONE',
+      'ROOM_JOIN_PRIVATE']);
 
   //Actions to send to the backend
   const joinRoom = useEmitEvent('ROOM_JOIN');
