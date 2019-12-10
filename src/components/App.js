@@ -9,6 +9,7 @@ import PlayerSelection from './users/PlayerSelection';
 import PlayersList from './users/PlayerList';
 import PlayersForm from './users/PlayersForm';
 import ResultMessage from './users/ResultMessage';
+import './App.css';
 
 
 
@@ -36,19 +37,20 @@ export default function App() {
     symbols: ['Q', 'Z', 'W', 'P'],
     players: [{
       name: 'Jose',
-      color: 'red',
+      color: '#ff00ee',
       symbol: '!'
     }, {
       name: 'Dylan',
-      color: 'blue',
+      color: '#00c3ff',
       symbol: '!'
     }],
-    winner: 'Dylan'
+    winner: 'Jose'
   };
 
 
   return (
     <>
+      <h1>The Amazing Race</h1>
       <EnterName handleName={handleName} />
       <span>Your name is {eventState.name}</span>
       <p>make a room ya dingus</p>
