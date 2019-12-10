@@ -1,9 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useEmitEvent, useOnEvent } from '../socket';
 import Form from './users/Form';
 import { reducer } from '../reducers/reducer';
 import LobbyList from './users/LobbyList';
 import EnterName from './users/EnterName';
+import PlayerSelection from './users/PlayerSelection';
+import PlayersList from './users/PlayerList';
+import PlayersForm from './users/PlayersForm';
+import ResultMessage from './users/ResultMessage';
+import './App.css';
 
 
 export default function App() {
@@ -30,6 +35,22 @@ export default function App() {
     enterName({ name: data });
   };
 
+  const props = { 
+    colors: ['black', 'red', 'blue', 'green'], 
+    symbols: ['Q', 'Z', 'W', 'P'],
+    players: [{
+      name: 'Jose',
+      color: '#ff00ee',
+      symbol: '!'
+    }, {
+      name: 'Dylan',
+      color: '#00c3ff',
+      symbol: '!'
+    }],
+    winner: 'Jose'
+
+  };
+
   const keyDownListener = (event) => {
     const keyName = event.key;
     if(keyName === 'ArrowUp') {
@@ -54,12 +75,21 @@ export default function App() {
   });
 
   return (
-    <div>
+    <>
+      <h1>The Amazing Race</h1>
       <EnterName handleName={handleName} />
       <p>make a room ya dingus</p>
       <Form handleSubmit={handleSubmit} />
       <LobbyList rooms={eventState.rooms} />
       <br />
-    </div>
+      <p>join a room ya idjit</p>
+      <JoinRoomForm handleJoin={handleSubmit} />
+
+      <PlayersForm handleSubmit={handleSubmit} />
+      <PlayerSelection handleSubmit={handleSubmit} colors={props.colors} symbols={props.symbols} />
+      <PlayersList players={props.players} />
+      <ResultMessage handleSubmit={handleSubmit} name={props.players[0].name} winner={props.winner} />
+    </>
+
   );
 }
