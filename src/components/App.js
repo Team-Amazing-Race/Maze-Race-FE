@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useEmitEvent, useOnEvent } from '../socket';
 import Form from './users/Form';
 import { reducer } from '../reducers/reducer';
