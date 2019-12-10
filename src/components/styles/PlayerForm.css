@@ -1,18 +1,13 @@
-.Modal {
-  margin: 0;
-}
-
 @font-face {
   font-family: "Maze"; 
-  src: url(../assets/fonts/Maze.ttf)
+  src: url('../../assets/fonts/Maze.ttf')
 }
 
-h1 {
+.PlayersForm {
   display:flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  font-family: "Maze";
-  font-size: 700%;
+  margin: 0;
 }

@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styles from '../styles/PlayerForm.css';
 
 const PlayersForm = ({ handleSubmit, type }) => {
 
   const [players, setPlayers] = useState('');
 
   return (
-    <form onSubmit={(event) => handleSubmit(event, players)}>
+    <form className={styles.PlayersForm} onSubmit={(event) => handleSubmit(event, players)}>
       <input type={type} value={players} onChange={({ target }) => setPlayers(target.value)} />
+      <br></br>
       <button>Start</button>
     </form>
   );

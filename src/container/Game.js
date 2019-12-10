@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useEmitEvent, useOnEvent } from '../socket';
 import { reducer } from '../reducers/reducer';
 import P5Wrapper from 'react-p5-wrapper';
-
 import PlayersForm from '../components/users/PlayersForm';
 import PlayerSelection from '../components/users/PlayerSelection';
 import PlayersList from '../components/users/PlayerList';
 import ResultMessage from '../components/users/ResultMessage';
 import Modal from '../components/Modal';
 import sketch from '../components/sketch/Sketch';
+import styles from '../components/styles/Game.css';
 
 const Game = () => {
   // State
@@ -69,7 +69,8 @@ const Game = () => {
   if(!players && isOpen) {
     children = (
       <>
-        <h1>Logo!</h1>
+        <h1>Basic Ass Maze Game</h1>
+        <p>Enter Number of Players:</p>
         <PlayersForm handleSubmit={handleNewGame} type="number" />
       </>
     );
