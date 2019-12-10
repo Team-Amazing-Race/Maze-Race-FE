@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useEmitEvent, useOnEvent } from '../socket';
 import Form from './users/Form';
 import { reducer } from '../reducers/reducer';
-import JoinRoomForm from './users/JoinRoom';
 import LobbyList from './users/LobbyList';
 import EnterName from './users/EnterName';
 
