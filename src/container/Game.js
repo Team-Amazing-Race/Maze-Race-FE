@@ -31,17 +31,17 @@ const Game = () => {
 
   //Handlers
 
-  const handleSubmit = (event, data) => {
+  const handleRoomJoin = (event, data) => {
     event.preventDefault();
     joinRoom({ room: data, name: eventState.name });
   };
-
+  
   const handleName = (event, data) => {
     event.preventDefault();
     enterName({ name: data });
-
+    
   };
-
+  
   const handleNewGame = (event, number) => {
     event.preventDefault();
     setPlayers(number);
@@ -80,7 +80,7 @@ const Game = () => {
     children = (
       <>
         <PlayersForm handleSubmit={handleName} type="text" />
-        <PlayersForm handleSubmit={handleSubmit} type="text" />
+        <PlayersForm handleSubmit={handleRoomJoin} type="text" />
         <PlayersList players={[{ name: 'poop', color: 'brown', symbol: '$' }]} />
       </>
     );

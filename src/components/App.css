@@ -1,7 +1,3 @@
-.Modal {
-  margin: 0;
-}
-
 @font-face {
   font-family: "Maze"; 
   src: url(../assets/fonts/Maze.ttf)
@@ -14,5 +10,10 @@ h1 {
   justify-content: center;
   align-items: center;
   font-family: "Maze";
-  font-size: 700%;
+  font-size: 1000%;
+
+  color: #ff00ee;
+  -webkit-text-fill-color: transparent;
+  background: -webkit-gradient(linear,left top,left bottom,from(#ff00ee),to(#00c3ff));
+ -webkit-background-clip: text;
 }
