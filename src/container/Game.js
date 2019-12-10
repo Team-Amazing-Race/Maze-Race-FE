@@ -65,6 +65,7 @@ const Game = () => {
 
   //Modal display logic
 
+  // Home Screen
   if(!players && isOpen) {
     children = (
       <>
@@ -74,6 +75,7 @@ const Game = () => {
     );
   }
 
+  //Lobby
   if(players && isOpen && !winner) {
     children = (
       <>
@@ -84,6 +86,7 @@ const Game = () => {
     );
   }
 
+  //Results screen
   if(winner && isOpen) {
     children = <ResultMessage winner={winner} handleSubmit={handleReset} />;
   }

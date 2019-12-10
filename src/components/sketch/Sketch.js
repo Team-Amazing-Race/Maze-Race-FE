@@ -1,9 +1,9 @@
 export default function sketch(p) {
 
-  let rooms;
   let currentPlayer;
-  let currentRoom;
   let playerData;
+  let rooms;
+  let currentRoom;
 
   p.myCustomRedrawAccordingToNewPropsHandler = (props) => {
     if(props.rooms) {
