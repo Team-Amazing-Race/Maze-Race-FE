@@ -20,7 +20,6 @@ export default function App() {
   const handleSubmit = (event, data) => {
     event.preventDefault();
     joinRoom({ room: data, name: eventState.name });
-    console.log(eventState);
   };
 
   const handleName = (event, data) => {
@@ -31,16 +30,16 @@ export default function App() {
   const keyDownListener = (event) => {
     const keyName = event.key;
     if(keyName === 'ArrowUp') {
-      movePlayer({ dir: 'up', name: eventState.name });
+      movePlayer({ dir: 'up', name: eventState.name, room: eventState.inRoom });
     }
     if(keyName === 'ArrowDown') {
-      movePlayer({ dir: 'down', name: eventState.name });
+      movePlayer({ dir: 'down', name: eventState.name, room: eventState.inRoom });
     }
     if(keyName === 'ArrowRight') {
-      movePlayer({ dir: 'right', name: eventState.name });
+      movePlayer({ dir: 'right', name: eventState.name, room: eventState.inRoom });
     }
     if(keyName === 'ArrowLeft') {
-      movePlayer({ dir: 'left', name: eventState.name });
+      movePlayer({ dir: 'left', name: eventState.name, room: eventState.inRoom });
     }
   };
 

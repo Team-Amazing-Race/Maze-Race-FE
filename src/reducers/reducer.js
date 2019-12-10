@@ -20,7 +20,7 @@ export const reducer = (state, { type, payload }) => {
             return currentRoom;
           }
         });
-        return { ...state, rooms };
+        return { ...state, rooms, inRoom: room };
       }
 
       return {
@@ -36,7 +36,7 @@ export const reducer = (state, { type, payload }) => {
               }
             ]
           }
-        ]
+        ], inRoom: room
       };
     }
     case 'ROOM_DISCONNECT': {
@@ -47,14 +47,12 @@ export const reducer = (state, { type, payload }) => {
       return { ...state, name: payload };
 
     case 'MOVE_PLAYER_DONE': {
+      const inRoom = payload.room;
       const playerToMove = payload.name;
       const rooms = state.rooms;
 
-
       const room = rooms.find(room => {
-        return room.players.some(foundPlayer => {
-          return foundPlayer.name === playerToMove;
-        }) === true;
+        return room.name === inRoom;
       });
 
       const player = room.players.find(person => {
@@ -82,9 +80,7 @@ export const reducer = (state, { type, payload }) => {
       };
 
       const newRooms = state.rooms.map(openRoom => {
-        if(openRoom.players.some(person => {
-          return person.name === player.name;
-        })) {
+        if(openRoom.name === inRoom) {
           const newPlayers = openRoom.players.map(person => {
             if(person.name === player.name) {
               return { ...person, xPos: newX(), yPos: newY() };
