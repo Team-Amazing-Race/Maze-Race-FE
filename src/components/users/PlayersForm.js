@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styles from '../styles/PlayerForm.css';
+import styles from '../styles/PlayersForm.css';
 
 const PlayersForm = ({ handleSubmit, type }) => {
 
@@ -8,7 +8,7 @@ const PlayersForm = ({ handleSubmit, type }) => {
 
   return (
     <form className={styles.PlayersForm} onSubmit={(event) => handleSubmit(event, players)}>
-      <input type="number" name="quantity" min="1" max="8" value={players} onChange={({ target }) => setPlayers(target.value)} />
+      <input className={styles.PlayerNumber} type="number" name="quantity" min="1" max="8" value={players} onChange={({ target }) => setPlayers(target.value)} />
       <br></br>
       <button>Start</button>
     </form>

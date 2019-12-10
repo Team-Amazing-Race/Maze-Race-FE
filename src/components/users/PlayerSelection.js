@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styles from '../styles/PlayerSelection.css'
 
 const PlayerSelection = ({ handleSubmit, colors, symbols }) => {
 
   const [name, setName] = useState('');
 
   const selectionElements = colors.map((color, i) => (
-    <label key={i} style={{ backgroundColor: color }}> 
+    <label key={i} style={{ backgroundColor: color }} className={styles.Label}> 
       {symbols[i]}
-      <input type="radio" id="selection"  value={color + symbols[i]} />
+      <input type="radio" id="selection"  value={color + symbols[i]} className={styles.Radio}/>
     </label>
   ));
 
   return (
     <form onSubmit={(event) => handleSubmit(event, name)}>
-      <input type="text" value={name} onChange={({ target }) => setName(target.value)} />
+      <input className={styles.PlayerName} type="text" value={name} onChange={({ target }) => setName(target.value)} />
       <div>
         {selectionElements}
       </div>

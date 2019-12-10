@@ -71,7 +71,7 @@ const Game = () => {
       <>
         <h1>Basic Ass Maze Game</h1>
         <p>Enter Number of Players 1-8:</p>
-        <PlayersForm handleSubmit={handleNewGame} />
+        <PlayersForm className={styles.input} handleSubmit={handleNewGame} />
       </>
     );
   }

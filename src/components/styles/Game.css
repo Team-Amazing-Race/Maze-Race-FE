@@ -31,7 +31,7 @@ p {
   -webkit-text-fill-color: transparent;
 }
 
-input {
+.input {
   background: rgb(0, 0, 0);
   border: 1px solid white;
   border-radius: 2%;
@@ -42,9 +42,7 @@ input {
   background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
   background: linear-gradient(to top, #ff00ee, #00c3ff); 
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-
+  -webkit-text-fill-color: none;
 }
 
 button {
