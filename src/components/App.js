@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useEmitEvent, useOnEvent } from '../socket';
 import Form from './users/Form';
 import { reducer } from '../reducers/reducer';
 import LobbyList from './users/LobbyList';
 import EnterName from './users/EnterName';
+import PlayerSelection from './users/PlayerSelection';
+import PlayersList from './users/PlayerList';
+import PlayersForm from './users/PlayersForm';
+import ResultMessage from './users/ResultMessage';
 
 
 export default function App() {
@@ -28,6 +32,22 @@ export default function App() {
   const handleName = (event, data) => {
     event.preventDefault();
     enterName({ name: data });
+
+  };
+
+  const props = { 
+    colors: ['black', 'red', 'blue', 'green'], 
+    symbols: ['Q', 'Z', 'W', 'P'],
+    players: [{
+      name: 'Jose',
+      color: 'red',
+      symbol: '!'
+    }, {
+      name: 'Dylan',
+      color: 'blue',
+      symbol: '!'
+    }],
+    winner: 'Dylan'
   };
 
   const keyDownListener = (event) => {
@@ -60,6 +80,15 @@ export default function App() {
       <Form handleSubmit={handleSubmit} />
       <LobbyList rooms={eventState.rooms} />
       <br />
+
+      <p>join a room ya idjit</p>
+      <JoinRoomForm handleJoin={handleSubmit} />
+
+      <PlayersForm handleSubmit={handleSubmit} />
+      <PlayerSelection handleSubmit={handleSubmit} colors={props.colors} symbols={props.symbols} />
+      <PlayersList players={props.players} />
+      <ResultMessage handleSubmit={handleSubmit} name={props.players[0].name} winner={props.winner} />
     </div>
+
   );
 }
