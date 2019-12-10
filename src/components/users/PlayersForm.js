@@ -8,7 +8,7 @@ const PlayersForm = ({ handleSubmit, type }) => {
 
   return (
     <form className={styles.PlayersForm} onSubmit={(event) => handleSubmit(event, players)}>
-      <input type={type} value={players} onChange={({ target }) => setPlayers(target.value)} />
+      <input type="number" name="quantity" min="1" max="8" value={players} onChange={({ target }) => setPlayers(target.value)} />
       <br></br>
       <button>Start</button>
     </form>

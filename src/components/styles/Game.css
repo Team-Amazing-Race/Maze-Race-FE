@@ -25,21 +25,26 @@ p {
   color: white;
   font-size: 2.5em;
   font-family: "KARNIVOT";
-   background: -webkit-linear-gradient(left, #ff00ee, #00c3ff);
-   background: -o-linear-gradient(right, #ff00ee, #00c3ff);
-   background: -moz-linear-gradient(right, #ff00ee, #00c3ff);
-   background: linear-gradient(to right, #ff00ee, #00c3ff); 
+  background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
+  background: linear-gradient(to top, #ff00ee, #00c3ff); 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 input {
-  background: rgb(56, 56, 56);
-  border: none;
+  background: rgb(0, 0, 0);
+  border: 1px solid white;
   border-radius: 2%;
   width: 10vw;
   height: 6vh;
   font-size: 3em;
+  font-family: "KARNIVOT";
+  background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
+  background: linear-gradient(to top, #ff00ee, #00c3ff); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+
 }
 
 button {
@@ -55,9 +60,9 @@ button {
 
 h1 {
   font-family: "Maze";
-  font-size: 5em;
+  font-size: 8em;
   color: #ff00ee;
   -webkit-text-fill-color: transparent;
   background: -webkit-gradient(linear,left top,left bottom,from(#ff00ee),to(#00c3ff));
- -webkit-background-clip: text;
+  -webkit-background-clip: text;
 }
