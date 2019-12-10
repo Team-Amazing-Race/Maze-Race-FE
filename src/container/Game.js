@@ -2,15 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { useEmitEvent, useOnEvent } from '../socket';
 import { reducer } from '../reducers/reducer';
 import P5Wrapper from 'react-p5-wrapper';
-const shortId = require('shortid');
 import PlayersForm from '../components/users/PlayersForm';
 import PlayerSelection from '../components/users/PlayerSelection';
 import PlayersList from '../components/users/PlayerList';
 import ResultMessage from '../components/users/ResultMessage';
 import Modal from '../components/Modal';
 import sketch from '../components/sketch/Sketch';
+import PropTypes from 'prop-types';
+import { isRoom } from '../selectors/roomSelector';
 
-const Game = () => {
+const shortId = require('shortid');
+
+const Game = ({ match }) => {
+
+  console.log(match);
+
+
   // State
   const [players, setPlayers] = useState(null);
   const [isOpen, setIsOpen] = useState(true);
@@ -28,12 +35,14 @@ const Game = () => {
   const joinRoom = useEmitEvent('ROOM_JOIN');
   const enterName = useEmitEvent('ENTER_NAME');
   const movePlayer = useEmitEvent('MOVE_PLAYER');
-
+  const joinRoomFromRoute = useEmitEvent('JOIN_ROOM_FROM_ROUTE');
   //Handlers
 
-  const handleRoomJoin = (event) => {
+  const handleRoomJoin = (event, number) => {
     event.preventDefault();
     joinRoom({ room: shortId.generate(), name: eventState.name });
+    setPlayers(number);
+
   };
 
   const handleName = (event, data) => {
@@ -42,10 +51,6 @@ const Game = () => {
 
   };
 
-  const handleNewGame = (event, number) => {
-    event.preventDefault();
-    setPlayers(number);
-  };
 
   const handleReset = () => {
 
@@ -66,21 +71,28 @@ const Game = () => {
   //Modal display logic
 
   // Home Screen
-  if(!players && isOpen) {
+  if(!players && isOpen && !match.params.roomId) {
     children = (
       <>
         <h1>Logo!</h1>
-        <PlayersForm handleSubmit={handleNewGame} type="number" />
+        <PlayersForm handleSubmit={handleRoomJoin} type="number" />
       </>
     );
   }
 
   //Lobby
   if(players && isOpen && !winner) {
+    console.log(eventState.inRoom);
+    if(match.params.roomId) {
+      joinRoomFromRoute(match.params.roomId);
+      console.log('SOMEONE JOINED');
+    }
+    console.log(isRoom(eventState));
+
+
     children = (
       <>
         <PlayersForm handleSubmit={handleName} type="text" />
-        <PlayersForm handleSubmit={handleRoomJoin} type="text" />
         <PlayersList players={[{ name: 'poop', color: 'brown', symbol: '$' }]} />
       </>
     );
@@ -128,5 +140,8 @@ const Game = () => {
   );
 };
 
+Game.propTypes = {
+  match: PropTypes.obj
+};
 
 export default Game;
