@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useEmitEvent, useOnEvent } from '../socket';
 import { reducer } from '../reducers/reducer';
+import P5Wrapper from 'react-p5-wrapper';
 
 import PlayersForm from '../components/users/PlayersForm';
 import PlayerSelection from '../components/users/PlayerSelection';
 import PlayersList from '../components/users/PlayerList';
 import ResultMessage from '../components/users/ResultMessage';
 import Modal from '../components/Modal';
+import sketch from '../components/sketch/Sketch';
 
 const Game = () => {
   // State
@@ -51,7 +53,7 @@ const Game = () => {
 
   const handlePlayerSelect = (event, data) => {
     event.preventDefault();
-    setPlayers(data);
+    // setPlayers(data);
   };
 
 
@@ -64,11 +66,10 @@ const Game = () => {
   //Modal display logic
 
   if(!players && isOpen) {
-    console.log('here!!');
     children = (
       <>
         <h1>Logo!</h1>
-        <PlayersForm handleSubmit={handleNewGame} />
+        <PlayersForm handleSubmit={handleNewGame} type="number" />
       </>
     );
   }
@@ -76,7 +77,8 @@ const Game = () => {
   if(players && isOpen && !winner) {
     children = (
       <>
-        <PlayerSelection colors={colors} symbols={symbols} handleSubmit={handlePlayerSelect} />
+        <PlayersForm handleSubmit={handleName} type="text" />
+        <PlayersForm handleSubmit={handleSubmit} type="text" />
         <PlayersList players={[{ name: 'poop', color: 'brown', symbol: '$' }]} />
       </>
     );
@@ -112,14 +114,14 @@ const Game = () => {
     };
   });
 
-  useEffect(() => {
-
-  });
 
   return (
-    <Modal>
-      {children}
-    </Modal>
+    <>
+      <Modal>
+        {children}
+      </Modal>
+      {eventState.inRoom && eventState.name && <P5Wrapper sketch={sketch} rooms={eventState.rooms} currentRoom={eventState.inRoom} currentPlayer={eventState.name} />}
+    </>
   );
 };
 
