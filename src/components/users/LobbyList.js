@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Lobby from './Lobby';
 
 const LobbyList = ({ rooms }) => {
-  console.log(rooms);
   const roomDisplay = rooms.map(room => {
     return (
       <li key={room.name}>
