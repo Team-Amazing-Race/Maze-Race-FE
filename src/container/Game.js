@@ -13,16 +13,20 @@ const Game = () => {
   let children;
   const colors = ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
   const symbols = ['Q', 'Z', 'W', 'P', 'K', 'M', 'B', 'S'];
-  
+
   const handleNewGame = (event, number) => {
     event.preventDefault();
     setPlayers(number);
   };
 
-  // const handlePlayerSelect = (event, data) => {
-  //   event.preventDefault();
+  const handleReset = () => {
+    
+  };
 
-  // };
+  const handlePlayerSelect = (event, data) => {
+    event.preventDefault();
+    setPlayers(data);
+  };
 
   if(!players && isOpen) {
     children = (
@@ -31,15 +35,15 @@ const Game = () => {
     );
   }
 
-  if(players && isOpen  ) {
+  if(players && isOpen && !winner) {
     children = (
-      <PlayerSelection colors={colors} symbols={symbols}/>,
-      <PlayersList />
+      <PlayerSelection colors={colors} symbols={symbols} handleSubmit={handlePlayerSelect} />,
+      <PlayersList players={players} />
     );
   }
 
   if(winner && isOpen) {
-    children = <ResultMessage />;
+    children = <ResultMessage winner={winner} handleSubmit={handleReset} />;
   }
 
   return (
