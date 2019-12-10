@@ -8,6 +8,10 @@
   visibility: hidden;
 }
 
+.Radio:focus {
+  color: white
+}
+
 .PlayerName {
   background: rgb(0, 0, 0);
   border: 1px solid white;
@@ -18,3 +22,20 @@
   font-family: "KARNIVOT";
   color: white;  
 }
+
+.ButtonContainer {
+  label {
+    border-radius: 10px;
+    width: 5vw;
+    height: 5vh;
+    align-items: center;
+    justify-content: center;
+  }
+  label:hover, label:active {
+    color: white;
+  }
+  input:checked + label {
+    color: white;
+  }
+}
+
