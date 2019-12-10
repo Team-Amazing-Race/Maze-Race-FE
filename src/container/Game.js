@@ -11,17 +11,29 @@ const Game = () => {
   const [winner, setWinner] = useState(null);
 
   let children;
+  const colors = ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+  const symbols = ['Q', 'Z', 'W', 'P', 'K', 'M', 'B', 'S'];
+  
+  const handleNewGame = (event, number) => {
+    event.preventDefault();
+    setPlayers(number);
+  };
+
+  // const handlePlayerSelect = (event, data) => {
+  //   event.preventDefault();
+
+  // };
 
   if(!players && isOpen) {
     children = (
       <h1>Logo!</h1>,
-      <PlayersForm />
+      <PlayersForm handleSubmit={handleNewGame} />
     );
   }
 
   if(players && isOpen) {
     children = (
-      <PlayerSelection />,
+      <PlayerSelection colors={colors} symbols={symbols}/>,
       <PlayersList />
     );
   }
