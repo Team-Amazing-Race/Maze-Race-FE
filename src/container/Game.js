@@ -13,7 +13,6 @@ const Game = () => {
   let children;
   const colors = ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
   const symbols = ['Q', 'Z', 'W', 'P', 'K', 'M', 'B', 'S'];
-
   const handleNewGame = (event, number) => {
     event.preventDefault();
     setPlayers(number);
