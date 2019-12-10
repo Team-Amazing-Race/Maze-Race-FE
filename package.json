@@ -30,6 +30,7 @@
     "react-dom": "^16.12.0",
     "react-keydown": "^1.9.12",
     "react-p5-wrapper": "^2.0.0",
+    "shortid": "^2.2.15",
     "socket.io-client": "^2.3.0"
   },
   "devDependencies": {

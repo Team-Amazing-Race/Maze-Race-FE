@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useEmitEvent, useOnEvent } from '../socket';
 import { reducer } from '../reducers/reducer';
 import P5Wrapper from 'react-p5-wrapper';
-
+const shortId = require('shortid');
 import PlayersForm from '../components/users/PlayersForm';
 import PlayerSelection from '../components/users/PlayerSelection';
 import PlayersList from '../components/users/PlayerList';
@@ -31,17 +31,17 @@ const Game = () => {
 
   //Handlers
 
-  const handleRoomJoin = (event, data) => {
+  const handleRoomJoin = (event) => {
     event.preventDefault();
-    joinRoom({ room: data, name: eventState.name });
+    joinRoom({ room: shortId.generate(), name: eventState.name });
   };
-  
+
   const handleName = (event, data) => {
     event.preventDefault();
     enterName({ name: data });
-    
+
   };
-  
+
   const handleNewGame = (event, number) => {
     event.preventDefault();
     setPlayers(number);
