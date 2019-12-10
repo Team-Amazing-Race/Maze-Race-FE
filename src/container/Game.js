@@ -9,99 +9,22 @@ import ResultMessage from '../components/users/ResultMessage';
 import Modal from '../components/Modal';
 import sketch from '../components/sketch/Sketch';
 import PropTypes from 'prop-types';
-import { isRoom } from '../selectors/roomSelector';
+import { inRoom, getRunners, getPlayers } from '../selectors/roomSelector';
 
 const shortId = require('shortid');
 
-const Game = ({ match }) => {
+//variables
+let children;
+const colors = ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+const symbols = ['Q', 'Z', 'W', 'P', 'K', 'M', 'B', 'S'];
 
-  console.log(match);
 
+
+const Game = ({ match, history }) => {
 
   // State
-  const [players, setPlayers] = useState(null);
   const [isOpen, setIsOpen] = useState(true);
   const [winner, setWinner] = useState(null);
-
-
-  //Listen for events from the backend that will hit the reducer
-  const eventState = useOnEvent(reducer,
-    ['ROOM_JOIN_DONE',
-      'ENTER_NAME_DONE',
-      'MOVE_PLAYER_DONE',
-      'ROOM_JOIN_PRIVATE']);
-
-  //Actions to send to the backend
-  const joinRoom = useEmitEvent('ROOM_JOIN');
-  const enterName = useEmitEvent('ENTER_NAME');
-  const movePlayer = useEmitEvent('MOVE_PLAYER');
-  const joinRoomFromRoute = useEmitEvent('JOIN_ROOM_FROM_ROUTE');
-  //Handlers
-
-  const handleRoomJoin = (event, number) => {
-    event.preventDefault();
-    joinRoom({ room: shortId.generate(), name: eventState.name });
-    setPlayers(number);
-
-  };
-
-  const handleName = (event, data) => {
-    event.preventDefault();
-    enterName({ name: data });
-
-  };
-
-
-  const handleReset = () => {
-
-  };
-
-  const handlePlayerSelect = (event, data) => {
-    event.preventDefault();
-    // setPlayers(data);
-  };
-
-
-  //variables
-  let children;
-  const colors = ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-  const symbols = ['Q', 'Z', 'W', 'P', 'K', 'M', 'B', 'S'];
-
-
-  //Modal display logic
-
-  // Home Screen
-  if(!players && isOpen && !match.params.roomId) {
-    children = (
-      <>
-        <h1>Logo!</h1>
-        <PlayersForm handleSubmit={handleRoomJoin} type="number" />
-      </>
-    );
-  }
-
-  //Lobby
-  if(players && isOpen && !winner) {
-    console.log(eventState.inRoom);
-    if(match.params.roomId) {
-      joinRoomFromRoute(match.params.roomId);
-      console.log('SOMEONE JOINED');
-    }
-    console.log(isRoom(eventState));
-
-
-    children = (
-      <>
-        <PlayersForm handleSubmit={handleName} type="text" />
-        <PlayersList players={[{ name: 'poop', color: 'brown', symbol: '$' }]} />
-      </>
-    );
-  }
-
-  //Results screen
-  if(winner && isOpen) {
-    children = <ResultMessage winner={winner} handleSubmit={handleReset} />;
-  }
 
 
   //Keypress logic
@@ -130,6 +53,97 @@ const Game = ({ match }) => {
   });
 
 
+  //Listen for events from the backend that will hit the reducer
+  const eventState = useOnEvent(reducer,
+    ['ROOM_JOIN_DONE',
+      'ENTER_NAME_DONE',
+      'MOVE_PLAYER_DONE',
+      'ROOM_JOIN_PRIVATE_DONE',
+      'ROOM_CREATE_DONE',
+      'SET_USER_ID_DONE']);
+
+  //Actions to send to the backend
+  const createRoom = useEmitEvent('ROOM_CREATE');
+  const enterName = useEmitEvent('ENTER_NAME');
+  const movePlayer = useEmitEvent('MOVE_PLAYER');
+  const joinRoom = useEmitEvent('ROOM_JOIN');
+  const setUserId = useEmitEvent('SET_USER_ID');
+  const joinRoomPrivate = useEmitEvent('ROOM_JOIN_PRIVATE');
+
+  //set user ID
+
+  if(!eventState.userId) {
+    const id = shortId.generate();
+    setUserId(id);
+  }
+
+  if(!eventState.inRoom && match.params.roomId) {
+    console.log('join room!!!!!!');
+    joinRoomPrivate(match.params.roomId);
+    return null;
+  }
+  //Handlers
+
+  const handleRoomCreate = (event, number) => {
+    event.preventDefault();
+    const roomId = shortId.generate();
+    createRoom({ room: roomId, number: number, userId: eventState.userId });
+    history.push(`/${roomId}`);
+  };
+
+  const handleName = (event, data) => {
+    console.log(data);
+    event.preventDefault();
+    enterName({ name: data });
+  };
+
+
+  //Modal display logic
+
+  // console.log('isOpen', isOpen);
+  // console.log('roomId', match.params.roomId);
+  // console.log('winner', winner);
+  // console.log(eventState);
+
+
+  // Home Screen
+
+  if(isOpen && !match.params.roomId) {
+    children = (
+      <>
+        <h1>Logo!</h1>
+        <PlayersForm handleSubmit={handleRoomCreate} type="number" />
+      </>
+    );
+  }
+
+  // Check if in room
+
+  else if(isOpen && !winner && inRoom(eventState)) {
+    children = (
+      <>
+        <PlayersForm handleSubmit={handleName} type="text" />
+        <PlayersList players={getPlayers(eventState)} />
+      </>
+    );
+  }
+
+  // if not in room, join room
+
+  else {
+    console.log('ROOM JOIN');
+    joinRoom(eventState);
+  }
+
+  //Results screen
+  if(winner && isOpen) {
+    children = <ResultMessage winner={winner} handleSubmit={handleReset} />;
+  }
+
+
+
+
+
   return (
     <>
       <Modal>
@@ -141,7 +155,8 @@ const Game = ({ match }) => {
 };
 
 Game.propTypes = {
-  match: PropTypes.obj
+  match: PropTypes.obj,
+  history: PropTypes.object.isRequired
 };
 
 export default Game;

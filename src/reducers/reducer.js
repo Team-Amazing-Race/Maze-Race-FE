@@ -1,54 +1,96 @@
 export const reducer = (state, { type, payload }) => {
   switch(type) {
+
+    case 'SET_USER_ID_DONE':
+      return { ...state, userId: payload };
+
     case 'ROOM_JOIN_DONE': {
-      const { room, name } = payload;
-      const inRoom = () => {
-        const foundRoom = state.rooms.find(openRoom => {
-          return openRoom.name === room;
-        });
-        return foundRoom.players.some(player => {
-          return player.name === name;
-        });
-      };
-      if(state.rooms.some(currentRoom => {
-        return currentRoom.name === room && !inRoom();
-      })) {
-        const rooms = state.rooms.map(currentRoom => {
-          if(currentRoom.name === room) {
-            return { ...currentRoom, players: [...currentRoom.players, { name: name, xPos: 0, yPos: 0 }] };
-          } else {
-            return currentRoom;
-          }
-        });
-        return { ...state, rooms };
+
+      const rooms = state.rooms.map(room => {
+        if(room.name === state.inRoom) {
+
+          let playerAssigned = false;
+
+          const players = room.players.map(player => {
+
+            if(!playerAssigned && !player.userId) {
+
+              player.userId = state.userId;
+              playerAssigned = true;
+
+              return player;
+
+            } else {
+
+              return player;
+
+            }
+          });
+
+          return { ...room, runners: room.runners + 1, players };
+        } else {
+          return room;
+        }
+      });
+
+      return { ...state, rooms: rooms };
+    }
+
+    case 'ROOM_CREATE_DONE': {
+
+      const players = [];
+      for(let i = 0; i < payload.number; i++) {
+        players.push({ name: 'newPlayer', xPos: 0, yPos: 0, userId: null });
       }
+      // players[0].userId = payload.userId;
 
       return {
         ...state,
         rooms: [...state.rooms,
           {
-            name: room,
-            players: [
-              {
-                name: name,
-                xPos: 0,
-                yPos: 0,
-              }
-            ]
+            name: payload.room,
+            seats: Number(payload.number),
+            runners: 0,
+            players
           }
         ]
       };
     }
 
-    case 'ROOM_JOIN_PRIVATE':
-      return { ...state, inRoom: payload.room };
+    case 'ROOM_JOIN_PRIVATE_DONE':
+      return { ...state, inRoom: payload };
 
     case 'ROOM_DISCONNECT': {
       console.log('ROOM DISCONNECT');
       return state;
     }
-    case 'ENTER_NAME_DONE':
-      return { ...state, name: payload };
+    case 'ENTER_NAME_DONE': {
+      console.log('ENTER NAME DONE', payload);
+
+      const rooms = state.rooms.map(room => {
+        if(room.name === state.inRoom) {
+
+          const players = room.players.map(player => {
+
+            if(player.userId === state.userId) {
+              player.name = payload;
+              return player;
+
+            } else {
+
+              return player;
+            }
+          });
+
+          return { ...room, players };
+        }
+        else {
+          return room;
+        }
+      });
+
+      return { ...state, rooms };
+    }
 
     case 'MOVE_PLAYER_DONE': {
       const inRoom = payload.room;

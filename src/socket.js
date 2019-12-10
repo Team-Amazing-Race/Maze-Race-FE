@@ -32,7 +32,7 @@ export const useEmitEvent = eventName => {
 
 export const useOnEvent = (reducer, eventNames) => {
   const socket = useSocket();
-  const [state, dispatch] = useReducer(reducer, { rooms: [] });
+  const [state, dispatch] = useReducer(reducer, { rooms: [], userId: null });
 
   useEffect(() => {
     eventNames.forEach(eventName => {
