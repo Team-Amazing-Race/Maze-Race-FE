@@ -20,6 +20,8 @@
   height: 6vh;
   font-size: 3em;
   font-family: "KARNIVOT";
-  color:#00c3ff;
-  outline-color: #ff00ee;
+  background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
+  background: linear-gradient(to top, #ff00ee, #00c3ff); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
