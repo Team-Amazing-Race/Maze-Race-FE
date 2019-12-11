@@ -8,15 +8,15 @@ const PlayerSelection = ({ handleSubmit, colors, symbols }) => {
 
   const selectionElements = colors.map((color, i) => (
     <>
-      <input type="radio" id={color} value={color + symbols[i]} className={styles.Radio} name="playerSelections" />
-      <label key={i} style={{ backgroundColor: color }} className={styles.Label} htmlFor={color}>
+      <input type="radio" id={color} value={color + symbols[i]} name="playerSelections" />
+      <label key={i} style={{ backgroundColor: color }} htmlFor={color}>
         {symbols[i]}
       </label>
     </>
   ));
 
   return (
-    <form onSubmit={(event) => handleSubmit(event, name)}>
+    <form onSubmit={(event) => handleSubmit(event, name)} className={styles.PlayerForm}>
       <input className={styles.PlayerName} type="text" value={name} onChange={({ target }) => setName(target.value)} />
       <div className={styles.ButtonContainer}>
         {selectionElements}
