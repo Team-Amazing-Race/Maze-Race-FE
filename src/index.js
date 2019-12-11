@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import App from './components/App';
 import { SocketProvider } from './socket';
+import styles from '../src/components/styles/Index.css';
 import { reducer } from './reducers/reducer';
 
 render(
@@ -13,7 +14,8 @@ render(
       'ROOM_CREATE_DONE',
       'SET_USER_ID_DONE']
   }>
-    <App />
+    <App className={styles.index}/>
+
   </SocketProvider>,
   document.getElementById('root')
 );
