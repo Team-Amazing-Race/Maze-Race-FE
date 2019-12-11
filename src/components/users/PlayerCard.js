@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const PlayerCard = ({ name, color, symbol }) => {
-  console.log(name, symbol, color, '*****PLAYERCARD');
+const PlayerCard = ({ name, color, symbol, ready }) => {
 
   return (
     <>
@@ -11,6 +10,7 @@ const PlayerCard = ({ name, color, symbol }) => {
       <div style={{ backgroundColor: color }}>
         <span>{symbol}</span>
       </div>
+      <p>{ready ? '✔' : '✗'}</p>
     </>
   );
 
@@ -19,7 +19,8 @@ const PlayerCard = ({ name, color, symbol }) => {
 PlayerCard.propTypes = {
   name: PropTypes.string,
   color: PropTypes.string,
-  symbol: PropTypes.string 
+  symbol: PropTypes.string,
+  ready: PropTypes.bool
 };
 
 export default PlayerCard;
