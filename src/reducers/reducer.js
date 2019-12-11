@@ -74,7 +74,7 @@ export const reducer = (state, { type, payload }) => {
 
           const players = room.players.map(player => {
 
-            if(player.userId === state.userId) {
+            if(player.userId === payload.state.userId) {
               player.name = payload.name;
               player.color = payload.color;
               player.symbol = payload.symbol;

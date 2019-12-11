@@ -47,7 +47,7 @@ const Lobby = ({ match, history }) => {
     event.preventDefault();
     console.log('HANDLENAME', name, color, symbol);
     
-    enterName({ name: name, color: color, symbol: symbol });
+    enterName({ name: name, color: color, symbol: symbol, state: eventState });
   };
 
   const colors = ['#FF0000', '#FE8300', '#FFF800', '#4AF441', '#56F0F9', '#0086FF', '#5E28FF', '#FF00F9'];
