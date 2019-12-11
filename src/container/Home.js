@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import PlayersForm from '../components/users/PlayersForm';
 import { useGameState } from '../socket';
 import useGameEmitters from '../components/hooks/gameState';
+import styles from '../components/styles/Game.css';
 
 const shortId = require('shortid');
 
@@ -21,8 +22,9 @@ const Home = ({ history }) => {
 
   return (
     <>
-      <h1>Logo!</h1>
-      <PlayersForm handleSubmit={handleRoomCreate} type="number" />
+      <h1>Basic Ass Maze Game</h1>
+      <h2>Enter Number of Players 1-8:</h2>
+      <PlayersForm className={styles.input} handleSubmit={handleRoomCreate} type="number" />
     </>
   );
 };
