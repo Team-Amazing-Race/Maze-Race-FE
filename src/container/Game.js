@@ -1,97 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useEmitEvent, useOnEvent } from '../socket';
-import { reducer } from '../reducers/reducer';
+import React, { useEffect } from 'react';
 import P5Wrapper from 'react-p5-wrapper';
-import PlayersForm from '../components/users/PlayersForm';
-import PlayerSelection from '../components/users/PlayerSelection';
-import PlayersList from '../components/users/PlayerList';
-import ResultMessage from '../components/users/ResultMessage';
+
 import Modal from '../components/Modal';
 import sketch from '../components/sketch/Sketch';
-import styles from '../components/styles/Game.css';
+import PropTypes from 'prop-types';
+import { useGameState } from '../socket';
+import useGameEmitters from '../components/hooks/gameState';
 
-const Game = () => {
+
+const Game = ({ history }) => {
+
   // State
-  const [players, setPlayers] = useState(null);
-  const [isOpen, setIsOpen] = useState(true);
-  const [winner, setWinner] = useState(null);
-
-
-  //Listen for events from the backend that will hit the reducer
-  const eventState = useOnEvent(reducer,
-    ['ROOM_JOIN_DONE',
-      'ENTER_NAME_DONE',
-      'MOVE_PLAYER_DONE',
-      'ROOM_JOIN_PRIVATE']);
-
-  //Actions to send to the backend
-  const joinRoom = useEmitEvent('ROOM_JOIN');
-  const enterName = useEmitEvent('ENTER_NAME');
-  const movePlayer = useEmitEvent('MOVE_PLAYER');
-
-  //Handlers
-
-  const handleRoomJoin = (event, data) => {
-    event.preventDefault();
-    joinRoom({ room: data, name: eventState.name });
-  };
-  
-  const handleName = (event, data) => {
-    event.preventDefault();
-    enterName({ name: data });
-    
-  };
-  
-  const handleNewGame = (event, number) => {
-    event.preventDefault();
-    setPlayers(number);
-  };
-
-  const handleReset = () => {
-
-  };
-
-  const handlePlayerSelect = (event, data) => {
-    event.preventDefault();
-    // setPlayers(data);
-  };
-
-
-  //variables
-  let children;
-  const colors = ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-  const symbols = ['Q', 'Z', 'W', 'P', 'K', 'M', 'B', 'S'];
-
-
-  //Modal display logic
-
-  // Home Screen
-  if(!players && isOpen) {
-    children = (
-      <>
-        <h1>Basic Ass Maze Game</h1>
-        <p>Enter Number of Players 1-8:</p>
-        <PlayersForm className={styles.input} handleSubmit={handleNewGame} />
-      </>
-    );
-  }
-
-  //Lobby
-  if(players && isOpen && !winner) {
-    children = (
-      <>
-        <PlayersForm handleSubmit={handleName} type="text" />
-        <PlayersForm handleSubmit={handleRoomJoin} type="text" />
-        <PlayersList players={[{ name: 'poop', color: 'brown', symbol: '$' }]} />
-      </>
-    );
-  }
-
-  //Results screen
-  if(winner && isOpen) {
-    children = <ResultMessage winner={winner} handleSubmit={handleReset} />;
-  }
-
+  const { movePlayer } = useGameEmitters();
+  const eventState = useGameState();
 
   //Keypress logic
 
@@ -119,6 +40,18 @@ const Game = () => {
   });
 
 
+
+
+  // Check if in room
+
+  // let children;
+
+
+  //Results screen
+  // if(winner && isOpen) {
+  //   children = <ResultMessage winner={winner} handleSubmit={handleReset} />;
+  // }
+
   return (
     <>
       <Modal>
@@ -129,5 +62,9 @@ const Game = () => {
   );
 };
 
+Game.propTypes = {
+  match: PropTypes.obj,
+  history: PropTypes.object.isRequired
+};
 
 export default Game;

@@ -5,18 +5,20 @@ import styles from '../styles/PlayerSelection.css';
 const PlayerSelection = ({ handleSubmit, colors, symbols }) => {
 
   const [name, setName] = useState('');
-
+  const [symbol, setSymbol] = useState('');
+  const [color, setColor] = useState('');
+  
   const selectionElements = colors.map((color, i) => (
     <>
-      <input type="radio" id={color} value={color + symbols[i]} className={styles.Radio} name="playerSelections" />
-      <label key={i} style={{ backgroundColor: color }} className={styles.Label} htmlFor={color}>
+      <input type="radio" id={color} value={symbols[i]} name="playerSelections" onClick={({ target }) => { setSymbol(target.value); setColor(target.id);}}/>
+      <label key={i} style={{ backgroundColor: color }} htmlFor={color} >
         {symbols[i]}
       </label>
     </>
   ));
 
   return (
-    <form onSubmit={(event) => handleSubmit(event, name)}>
+    <form onSubmit={(event) => handleSubmit(event, name, color, symbol)} className={styles.PlayerForm}>
       <input className={styles.PlayerName} type="text" value={name} onChange={({ target }) => setName(target.value)} />
       <div className={styles.ButtonContainer}>
         {selectionElements}
