@@ -1,53 +1,70 @@
-import React, { useState } from 'react';
-import PlayersForm from '../components/users/PlayersForm';
-import PlayerSelection from '../components/users/PlayerSelection';
-import PlayersList from '../components/users/PlayerList';
-import ResultMessage from '../components/users/ResultMessage';
+import React, { useEffect } from 'react';
+import P5Wrapper from 'react-p5-wrapper';
+
 import Modal from '../components/Modal';
+import sketch from '../components/sketch/Sketch';
+import PropTypes from 'prop-types';
+import { useGameState } from '../socket';
+import useGameEmitters from '../components/hooks/gameState';
 
-const Game = () => {
-  const [players, setPlayers] = useState(null);
-  const [isOpen, setIsOpen] = useState(true);
-  const [winner, setWinner] = useState(null);
 
-  let children;
-  const colors = ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-  const symbols = ['Q', 'Z', 'W', 'P', 'K', 'M', 'B', 'S'];
-  
-  const handleNewGame = (event, number) => {
-    event.preventDefault();
-    setPlayers(number);
+const Game = ({ history }) => {
+
+  // State
+  const { movePlayer } = useGameEmitters();
+  const eventState = useGameState();
+
+  //Keypress logic
+
+  const keyDownListener = (event) => {
+    const keyName = event.key;
+    if(keyName === 'ArrowUp') {
+      movePlayer({ dir: 'up', name: eventState.name, room: eventState.inRoom });
+    }
+    if(keyName === 'ArrowDown') {
+      movePlayer({ dir: 'down', name: eventState.name, room: eventState.inRoom });
+    }
+    if(keyName === 'ArrowRight') {
+      movePlayer({ dir: 'right', name: eventState.name, room: eventState.inRoom });
+    }
+    if(keyName === 'ArrowLeft') {
+      movePlayer({ dir: 'left', name: eventState.name, room: eventState.inRoom });
+    }
   };
 
-  // const handlePlayerSelect = (event, data) => {
-  //   event.preventDefault();
+  useEffect(() => {
+    window.addEventListener('keydown', keyDownListener);
+    return () => {
+      window.removeEventListener('keydown', keyDownListener);
+    };
+  });
 
-  // };
 
-  if(!players && isOpen) {
-    children = (
-      <h1>Logo!</h1>,
-      <PlayersForm handleSubmit={handleNewGame} />
-    );
-  }
 
-  if(players && isOpen) {
-    children = (
-      <PlayerSelection colors={colors} symbols={symbols}/>,
-      <PlayersList />
-    );
-  }
 
-  if(winner && isOpen) {
-    children = <ResultMessage />;
-  }
+  // Check if in room
+
+  // let children;
+
+
+  //Results screen
+  // if(winner && isOpen) {
+  //   children = <ResultMessage winner={winner} handleSubmit={handleReset} />;
+  // }
 
   return (
-    <Modal>
-      {children}
-    </Modal>
+    <>
+      <Modal>
+        {children}
+      </Modal>
+      {eventState.inRoom && eventState.name && <P5Wrapper sketch={sketch} rooms={eventState.rooms} currentRoom={eventState.inRoom} currentPlayer={eventState.name} />}
+    </>
   );
 };
 
+Game.propTypes = {
+  match: PropTypes.obj,
+  history: PropTypes.object.isRequired
+};
 
 export default Game;
