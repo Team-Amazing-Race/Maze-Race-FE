@@ -55,8 +55,8 @@ const Lobby = ({ match, history }) => {
     enterName({ name: data });
   };
 
-  const colors = ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-  const symbols = ['Q', 'Z', 'W', 'P', 'K', 'M', 'B', 'S'];
+  const colors = ['#FF0000', '#FE8300', '#FFF800', '#4AF441', '#56F0F9', '#0086FF', '#5E28FF', '#FF00F9'];
+  const symbols = ['@', 'Δ', 'Ø', 'λ', 'π', 'µ', 'ß', 'Σ'];
   return (
     <>
       <PlayerSelection handleSubmit={handleName} colors={colors} symbols={symbols} />
