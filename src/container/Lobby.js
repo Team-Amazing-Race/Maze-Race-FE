@@ -1,23 +1,58 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import PlayersForm from '../components/users/PlayersForm';
-import PlayersList from '../components/users/PlayersList';
+import PlayerSelection from '../components/users/PlayerSelection';
+import PlayerList from '../components/users/PlayerList';
 import { useGameState } from '../socket';
 import useGameEmitters from '../components/hooks/gameState';
+import { getPlayers } from '../selectors/roomSelector';
+
+const shortId = require('shortid');
 
 const Lobby = ({ match, history }) => {
 
   const { setUserId, joinRoomPrivate, enterName, joinRoom } = useGameEmitters();
   const eventState = useGameState();
+  let playerList = null;
 
+  useEffect(() => {
 
+    joinRoomPrivate(match.params.roomId);
+
+    joinRoom(eventState);
+
+    const id = shortId.generate();
+    setUserId(id);    
+    
+  }, []);
+  
+  useEffect(() => {
+    
+    if(eventState.roomId) {
+      console.log('here***');
+      
+      const room = eventState.rooms.find(door => {
+        return door.id === eventState.roomId;
+      });
+      playerList = room.players || [];
+    }
+    // console.log('PLAYER LIST', playerList);
+    
+  });
+
+  const handleName = (event, data) => {
+    event.preventDefault();
+    enterName({ name: data });
+  };
+
+  const colors = ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+  const symbols = ['Q', 'Z', 'W', 'P', 'K', 'M', 'B', 'S'];
   return (
     <>
-      <PlayersForm handleSubmit={handleName} type="text" />
-      <PlayersList players={getPlayers(eventState)} />
+      <PlayerSelection handleSubmit={handleName} colors={colors} symbols={symbols} />
+      {playerList && <PlayerList players={playerList} />}
     </>
   );
-}
+};
 
 Lobby.propTypes = {
   match: PropTypes.obj,
@@ -38,12 +73,6 @@ export default Lobby;
 //     return null;
 // }
 
-// const handleName = (event, data) => {
-//     event.preventDefault();
-//     enterName({ name: data });
-// };
-
-
 //   else if (isOpen && !winner && inRoom(eventState)) {
 //     children = (
 //         <>
@@ -59,6 +88,3 @@ export default Lobby;
 //     console.log('ROOM JOIN');
 //     joinRoom(eventState);
 // }
-
-// const colors = ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-// const symbols = ['Q', 'Z', 'W', 'P', 'K', 'M', 'B', 'S'];

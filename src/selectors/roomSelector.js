@@ -21,8 +21,10 @@ export const getRunners = (state) => {
   ;
 
 export const getPlayers = (state) => {
+  console.log('Selector');
+  
   const room = state.rooms.find(door => {
     return door.id === state.roomId;
   });
-  return room.players;
+  return room.players || [];
 };

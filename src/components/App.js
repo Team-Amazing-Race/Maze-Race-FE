@@ -5,6 +5,7 @@ import {
   Route
 } from 'react-router-dom';
 import Home from '../container/Home';
+import Lobby from '../container/Lobby';
 import Game from '../container/Game';
 
 
