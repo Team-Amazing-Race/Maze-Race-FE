@@ -2,22 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const AboutCard = ({ aboutProps }) => {
+const AboutCard = ({ name, image, desc }) => {
 
 
   return (
-    <>
-      <h3>{aboutProps.name}</h3>
-      <img src={aboutProps.img}></img>
-      <p>{aboutProps.desc}</p>
-    </>
+    <div className={StyleSheet.Devs}>
+      <h3>{name}</h3>
+      <img src={image}></img>
+      <p>{desc}</p>
+    </div>
   );
 
 };
 
 AboutCard.propTypes = {
   name: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired 
 };
 

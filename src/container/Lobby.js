@@ -24,9 +24,10 @@ const Lobby = ({ match, history }) => {
     }
 
     if(!inRoom){
-      setUserId(shortId.generate()),
+      const userId = shortId.generate();
+      setUserId(userId),
       joinRoomPrivate(match.params.roomId),
-      joinRoom(eventState);
+      joinRoom({ ...eventState, userId });
     
     }
   }, []);
@@ -46,7 +47,7 @@ const Lobby = ({ match, history }) => {
     event.preventDefault();
     console.log('HANDLENAME', name, color, symbol);
     
-    enterName({ name: name, color: color, symbol: symbol });
+    enterName({ name: name, color: color, symbol: symbol, state: eventState });
   };
 
   const colors = ['#FF0000', '#FE8300', '#FFF800', '#4AF441', '#56F0F9', '#0086FF', '#5E28FF', '#FF00F9'];
