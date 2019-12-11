@@ -70,7 +70,7 @@ const Game = () => {
     children = (
       <>
         <h1>Basic Ass Maze Game</h1>
-        <p>Enter Number of Players 1-8:</p>
+        <h2>Enter Number of Players 1-8:</h2>
         <PlayersForm className={styles.input} handleSubmit={handleNewGame} />
       </>
     );
