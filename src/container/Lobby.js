@@ -15,29 +15,40 @@ const Lobby = ({ match, history }) => {
   let playerList = null;
 
   useEffect(() => {
+    Promise.all([
+      joinRoomPrivate(match.params.roomId),
+      joinRoom(eventState)
+    ])
+      .then(() => {
+        if(eventState.inRoom) {
+          console.log(eventState);
+          
+          const room = eventState.rooms.find(door => {
+            return door.name === eventState.inRoom;
+          });
+          playerList = room.players || [];
+        }
+      });
 
-    joinRoomPrivate(match.params.roomId);
-
-    joinRoom(eventState);
 
     const id = shortId.generate();
     setUserId(id);    
     
   }, []);
   
-  useEffect(() => {
+  // useEffect(() => {
     
-    if(eventState.roomId) {
-      console.log('here***');
+  //   if(eventState.roomId) {
+  //     console.log('here***');
       
-      const room = eventState.rooms.find(door => {
-        return door.id === eventState.roomId;
-      });
-      playerList = room.players || [];
-    }
-    // console.log('PLAYER LIST', playerList);
+  //     const room = eventState.rooms.find(door => {
+  //       return door.id === eventState.roomId;
+  //     });
+  //     playerList = room.players || [];
+  //   }
+  //   // console.log('PLAYER LIST', playerList);
     
-  });
+  // });
 
   const handleName = (event, data) => {
     event.preventDefault();
