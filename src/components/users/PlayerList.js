@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlayerCard from './PlayerCard';
+import styles from '../styles/PlayerList.css';
 
 const PlayersList = ({ players }) => {
-  const playerElements = players.map(player => {
+  const playerElements = players.map((player, i) => {
     return (
-      <li key={player.name + player.color + player.symbol}>
+      <li key={i}>
         <PlayerCard {...player} />
       </li>
     );
   });
 
   return (
-    <ul>
+    <ul className={styles.PlayersList}>
       {playerElements}
     </ul>
 

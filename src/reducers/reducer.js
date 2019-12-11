@@ -42,9 +42,8 @@ export const reducer = (state, { type, payload }) => {
       
       const players = [];
       for(let i = 0; i < payload.number; i++) {
-        players.push({ name: 'newPlayer', xPos: 0, yPos: 0, userId: null });
+        players.push({ name: 'Waiting for player...', color: null, symbol: null, ready: false, xPos: 0, yPos: 0, userId: null });
       }
-      // players[0].userId = payload.userId;
 
       return {
         ...state,
@@ -68,14 +67,16 @@ export const reducer = (state, { type, payload }) => {
     }
     case 'ENTER_NAME_DONE': {
       console.log('ENTER NAME DONE', payload);
-
+      
       const rooms = state.rooms.map(room => {
         if(room.name === state.inRoom) {
 
           const players = room.players.map(player => {
 
             if(player.userId === state.userId) {
-              player.name = payload;
+              player.name = payload.name;
+              player.color = payload.color;
+              player.symbol = payload.symbol;
               return player;
 
             } else {

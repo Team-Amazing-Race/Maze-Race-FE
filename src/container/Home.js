@@ -15,9 +15,15 @@ const Home = ({ history }) => {
   const handleRoomCreate = (event, number) => {
     event.preventDefault();
     const roomId = shortId.generate();
-  
-    createRoom({ room: roomId, number: number, userId: eventState.userId });
-    history.push(`/${roomId}`);
+    Promise.resolve(
+
+      createRoom({ room: roomId, number: number, userId: eventState.userId })
+    )
+      .then(() => {
+        console.log(eventState);
+        history.push(`/${roomId}`);
+      }
+      );
   };
 
   return (
