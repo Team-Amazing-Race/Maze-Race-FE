@@ -1,5 +1,10 @@
 .AboutElements {
   li{
     color: white;
+    list-style-type: none;
+  }
+  img{
+    height: 2em;
+    width: auto;
   }
 }
