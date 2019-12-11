@@ -6,7 +6,7 @@ export const reducer = (state, { type, payload }) => {
 
     case 'ROOM_JOIN_DONE': {
       console.log('ROOM_JOIN_DONE');
-      
+      console.log(payload);
       const rooms = state.rooms.map(room => {
         if(room.name === state.inRoom) {
 
@@ -16,7 +16,7 @@ export const reducer = (state, { type, payload }) => {
 
             if(!playerAssigned && !player.userId) {
               console.log(payload);
-              
+
               player.userId = payload.userId;
               playerAssigned = true;
 
@@ -40,7 +40,7 @@ export const reducer = (state, { type, payload }) => {
 
     case 'ROOM_CREATE_DONE': {
       console.log('ROOM CREATE DONE');
-      
+
       const players = [];
       for(let i = 0; i < payload.number; i++) {
         players.push({ name: 'Waiting for player...', color: null, symbol: null, ready: false, xPos: 0, yPos: 0, userId: null });

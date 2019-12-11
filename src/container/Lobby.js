@@ -16,19 +16,19 @@ const Lobby = ({ match, history }) => {
 
   useEffect(() => {
     let inRoom = null;
-    if(playerList){
+    if(playerList) {
 
       inRoom = playerList.some(player => {
-        return player.userId === eventState.userId; 
+        return player.userId === eventState.userId;
       });
     }
 
-    if(!inRoom){
+    if(!inRoom) {
       const userId = shortId.generate();
       setUserId(userId),
       joinRoomPrivate(match.params.roomId),
-      joinRoom({ ...eventState, userId });
-    
+      joinRoom({ ...eventState, userId, inRoom: match.params.roomId });
+
     }
   }, []);
 
@@ -39,14 +39,14 @@ const Lobby = ({ match, history }) => {
       });
       setPlayerList(room.players || []);
 
-    }     
+    }
   }, [eventState.rooms, eventState.inRoom, eventState.userId]);
 
 
   const handleName = (event, name, color, symbol) => {
     event.preventDefault();
     console.log('HANDLENAME', name, color, symbol);
-    
+
     enterName({ name: name, color: color, symbol: symbol, state: eventState });
   };
 
