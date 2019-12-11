@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from '../styles/AboutCard.css';
 
 
 const AboutCard = ({ name, image, desc }) => {
 
 
   return (
-    <div className={StyleSheet.Devs}>
+    <div className={styles.Devs}>
       <h3>{name}</h3>
       <img src={image}></img>
       <p>{desc}</p>

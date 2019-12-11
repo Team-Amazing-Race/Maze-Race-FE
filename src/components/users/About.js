@@ -14,12 +14,12 @@ const About = () => {
   });
 
   return (
-    <>
+    <div className={styles.AboutElements}>
       <h2>Meet The Developers</h2>
-      <ul className={styles.AboutElements}>
+      <ul>
         {aboutElements}
       </ul>
-    </>
+    </div>
   );
 };
 

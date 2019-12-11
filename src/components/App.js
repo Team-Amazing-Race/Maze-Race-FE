@@ -7,7 +7,6 @@ import {
 import Home from '../container/Home';
 import Lobby from '../container/Lobby';
 import Game from '../container/Game';
-
 import About from './users/About';
 
 export default function App() {

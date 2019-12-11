@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import P5Wrapper from 'react-p5-wrapper';
-
 import Modal from '../components/Modal';
 import sketch from '../components/sketch/Sketch';
 import PropTypes from 'prop-types';
