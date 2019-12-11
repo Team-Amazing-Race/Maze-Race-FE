@@ -1,16 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 //import styles from './styles/About.css';
 import AboutCard from './AboutCard';
-import aboutProps from './AboutProps.json';
-console.log(aboutProps);
+import aboutProps from './AboutProps';
+import styles from '../styles/About.css';
 
-const About = ({ aboutProps }) => {
-  const aboutDevs = aboutProps.map(aboutProps => {
-
+const About = () => {
+  const aboutElements = aboutProps.map(about => {    
     return (
-      <li key={aboutProps.name + aboutProps.img + aboutProps.desc}>
-        <AboutCard {...aboutProps}/>
+      <li key={about.name + about.img + about.desc}>
+        <AboutCard {...about}/>
       </li>
     );
   });
@@ -18,19 +16,11 @@ const About = ({ aboutProps }) => {
   return (
     <>
       <h2>Meet The Developers</h2>
-      <ul>
-        {aboutDevs}
+      <ul className={styles.AboutElements}>
+        {aboutElements}
       </ul>
     </>
   );
-};
-
-About.propTypes = {
-  aboutProps: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
-    desc: PropTypes.string.isRequired,
-  }))
 };
 
 export default About;

@@ -1,22 +1,22 @@
 [
   {
-    "name":"Dylan Corvidae",
-    "image": "../../assets/img/dylan.jpg",
+    "name": "Dylan Corvidae",
+    "image": "src/assets/img/dylan.jpg",
     "desc": "An agendered poly queer circus performer and punk/metal musician that enjoys spending time with their family in the forest and gardening. Their hobbies include: dance trapeze, hand-balancing, playing and making music, guitar, singing in choirs and screaming in bands."
   },
   {
     "name": "Kamran Ali",
-    "image": "./assets/img/",
+    "image": "src/assets/img/",
     "desc": "My name is Kam, I am a full-stack software developer that has proficiency in back-end Javascript node packages like express, and the front-end framework react/redux. I also have a strong background in Digital Design. I am very passionate about clean code and design, because I really want communication between the user and the developers clear."
   },
   {
     "name": "Sam Jespersen",
-    "image": "./assets/img/",
+    "image": "src/assets/img/",
     "desc": "Morty at heart, Jerry in practice."
   },
   {
     "name": "Jose Ojeda",
-    "image": "./assets/img/",
+    "image": "src/assets/img/",
     "desc": "Great Hair, Dad Jokes, Karaoke, Cardigan, Gator Mode"
   }
 ]
