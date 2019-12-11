@@ -15,8 +15,9 @@ export const reducer = (state, { type, payload }) => {
           const players = room.players.map(player => {
 
             if(!playerAssigned && !player.userId) {
-
-              player.userId = state.userId;
+              console.log(payload);
+              
+              player.userId = payload.userId;
               playerAssigned = true;
 
               return player;
@@ -67,7 +68,7 @@ export const reducer = (state, { type, payload }) => {
     }
     case 'ENTER_NAME_DONE': {
       console.log('ENTER NAME DONE', payload);
-      
+
       const rooms = state.rooms.map(room => {
         if(room.name === state.inRoom) {
 

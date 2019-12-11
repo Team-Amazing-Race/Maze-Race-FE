@@ -24,9 +24,10 @@ const Lobby = ({ match, history }) => {
     }
 
     if(!inRoom){
-      setUserId(shortId.generate()),
+      const userId = shortId.generate();
+      setUserId(userId),
       joinRoomPrivate(match.params.roomId),
-      joinRoom(eventState);
+      joinRoom({ ...eventState, userId });
     
     }
   }, []);
