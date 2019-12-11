@@ -5,7 +5,7 @@
 
   .PlayerName {
     background: black;
-    color: white;
+    color: #00c3ff;
     border: 1px solid white;
     border-radius: 2%;
     width: 10vw;
@@ -13,6 +13,7 @@
     font-size: 1.2em;
     font-family: "KARNIVOT";
     align-self: center;
+    outline-color: #ff00ee;
   }
 
   .ButtonContainer {
