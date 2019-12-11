@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Modal.css';
+import styles from './styles/Modal.css';
 
 const Modal = ({ children }) => {
 
