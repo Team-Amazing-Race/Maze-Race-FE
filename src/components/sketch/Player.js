@@ -15,10 +15,11 @@ export default class Player {
   }
 
 
-//transfer to state
-  move(axis, dir) {
+  //transfer to state
+  
+  // move(axis, dir) {
 
-    this[axis[0]] += dir;
+  //   this[axis[0]] += dir;
 
   }
 

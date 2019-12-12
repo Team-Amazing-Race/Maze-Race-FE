@@ -10,21 +10,21 @@ export default class Maze {
     this.p = p;
   }
 // transfer to state
-  getCellInfo(x, y) {
+  // getCellInfo(x, y) {
 
-    let cell = this.cellMap.find(cell => {
-      return cell.coordinates.x === x && cell.coordinates.y === y;
-    });
+  //   let cell = this.cellMap.find(cell => {
+  //     return cell.coordinates.x === x && cell.coordinates.y === y;
+  //   });
 
-    return Object.values(cell.exits);
+  //   return Object.values(cell.exits);
 
-  }
+  // }
 
-  //transfer to state
-  getEnd() {
-    let winningCell = this.cellMap[((this.h * this.w) / 2) + this.h / 2];
-    return [winningCell.coordinates.x, winningCell.coordinates.y];
-  }
+  // //transfer to state
+  // getEnd() {
+  //   let winningCell = this.cellMap[((this.h * this.w) / 2) + this.h / 2];
+  //   return [winningCell.coordinates.x, winningCell.coordinates.y];
+  // }
 
   showCells() {
     this.p.stroke(0);

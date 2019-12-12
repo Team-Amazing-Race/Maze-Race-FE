@@ -17,30 +17,27 @@ export default function sketch(p) {
 
   };
 
-  let xPos = 1;
-  let yPos = 20;
   let player;
   let maze;
   let end;
-
+  let players;
 
   // TODO create players from state.playerslist
 
-  // const playerPositions = () => {
-  //   rooms.find(room => {
-  //     return room.name === currentRoom;
-  //   })
-  //     .players.forEach(playerObj => {
-  //       return player(playerObj.xPos, -playerObj.yPos, 10, 10);
-  //     });
-  // };
 
   p.setup = () => {
-    player = new Player(p, xPos, yPos, 20, 30, 10, 10);
     maze = new Maze(p, 20, 20, 10, 10, cellMap);
-    end = maze.getEnd();
+    
+    //state
+    // end = maze.getEnd();
 
-    p.createCanvas(300, 300);
+
+    players = () => {
+      state.room.players.forEach(playerObj => {
+        return new Player(p, playerObj.xPos, -playerObj.yPos, 0, 0, 10, 10);
+      });
+    };
+    p.createCanvas(800, 800);
 
   };
 
@@ -50,7 +47,9 @@ export default function sketch(p) {
     maze.showCells();
 
     //edit for all players
-    player.show();
+    players.forEach(user => {
+      user.show();
+    });
 
     if(player.xPos === end[0] && player.yPos === end[1]) {
       p.fill(0);
