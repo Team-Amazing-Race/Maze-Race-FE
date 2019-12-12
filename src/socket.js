@@ -12,7 +12,17 @@ const SocketContext = createContext(socket);
 // eslint-disable-next-line react/prop-types
 export const SocketProvider = ({ children, reducer, eventNames }) => {
 
-  const [state, dispatch] = useReducer(reducer, { room: { players: [], runners: 0, seats: null, name: null }, userId: null });
+  const [state, dispatch] = useReducer(reducer, {
+    ready: false,
+    room: {
+      players: [],
+      runners: 0,
+      seats: null,
+      name: null
+    },
+    userId: null
+  }
+  );
 
   useEffect(() => {
     eventNames.forEach(eventName => {

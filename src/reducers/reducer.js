@@ -1,16 +1,16 @@
 export const reducer = (state, { type, payload }) => {
-  switch(type) {
+  switch (type) {
 
     case 'SET_USER_ID_DONE':
       return { ...state, userId: payload };
 
     case 'ROOM_JOIN_DONE': {
-      console.log(payload, 'PAYLOAD');
-      
-      return { ...state, userId: payload.userId, room: { ...state.room, runners: state.room.runners + 1, players: payload.playersInRoom } };
+
+      return { ...state, room: { ...state.room, players: payload.playersInRoom } };
     }
 
     case 'ROOM_CREATE_DONE': {
+      console.log(payload);
       return {
         ...state,
         room: payload
@@ -18,14 +18,18 @@ export const reducer = (state, { type, payload }) => {
     }
 
     case 'ROOM_JOIN_PRIVATE_DONE':
-      return { ...state, inRoom: payload };
+      console.log('REDUCER HIT');
+      return { ...state, userId: payload };
 
     case 'ROOM_DISCONNECT': {
       return state;
     }
     case 'ENTER_NAME_DONE': {
-      return { ...state, room: { ...state.room, players: payload } };
+      return { ...state, room: { ...state.room, runners: state.room.runners + 1, players: payload } };
     }
+    case 'READY_DONE':
+      console.log('READY REDUCER');
+      return { ...state, ready: true };
 
     case 'MOVE_PLAYER_DONE': {
       const inRoom = payload.room;
@@ -41,29 +45,29 @@ export const reducer = (state, { type, payload }) => {
       });
 
       const newX = () => {
-        if(payload.dir === 'right') {
+        if (payload.dir === 'right') {
           return player.xPos + 1;
         }
-        if(payload.dir === 'left') {
+        if (payload.dir === 'left') {
           return player.xPos - 1;
         }
         return player.xPos;
       };
 
       const newY = () => {
-        if(payload.dir === 'up') {
+        if (payload.dir === 'up') {
           return player.yPos + 1;
         }
-        if(payload.dir === 'down') {
+        if (payload.dir === 'down') {
           return player.yPos - 1;
         }
         return player.yPos;
       };
 
       const newRooms = state.rooms.map(openRoom => {
-        if(openRoom.name === inRoom) {
+        if (openRoom.name === inRoom) {
           const newPlayers = openRoom.players.map(person => {
-            if(person.name === player.name) {
+            if (person.name === player.name) {
               return { ...person, xPos: newX(), yPos: newY() };
             } else {
               return person;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import PlayerSelection from '../components/users/PlayerSelection';
 import PlayerList from '../components/users/PlayerList';
@@ -7,30 +7,16 @@ import useGameEmitters from '../components/hooks/gameState';
 
 const shortId = require('shortid');
 
+
 const Lobby = ({ match, history }) => {
 
-  const { setUserId, joinRoomPrivate, enterName, joinRoom } = useGameEmitters();
+  const { enterName, joinRoom, setReady } = useGameEmitters();
   const eventState = useGameState();
-  // const [playerList, setPlayerList] = useState(null);
 
   useEffect(() => {
     const userId = shortId.generate();
-    // setUserId(userId);
-    // joinRoomPrivate(match.params.roomId);
     joinRoom({ ...eventState, userId, inRoom: match.params.roomId });
   }, []);
-
-  // useEffect(() => {
-  //   if(eventState.inRoom && eventState.userId) {
-  //     console.log('MAKING PLAYERLIST FROM THE FOLLOWING STATE', eventState);
-
-  //     });
-  //     setPlayerList(room.players || []);
-  //     console.log('SET PLAYER LIST DONE');
-
-  //   }
-  // }, [eventState.rooms, eventState.inRoom, eventState.userId]);
-
 
   const handleName = (event, name, color, symbol) => {
     event.preventDefault();
@@ -41,6 +27,20 @@ const Lobby = ({ match, history }) => {
 
   const colors = ['#FF0000', '#FE8300', '#FFF800', '#4AF441', '#56F0F9', '#0086FF', '#5E28FF', '#FF00F9'];
   const symbols = ['@', 'Δ', 'Ø', 'λ', 'π', 'µ', 'ß', 'Σ'];
+
+  useEffect(() => {
+
+    if(eventState.room.runners && eventState.room.seats && eventState.room.runners === eventState.room.seats) {
+      setReady();
+    }
+  }, [eventState.room.runners]);
+
+  useEffect(() => {
+    if(eventState.ready) {
+      history.push(`/${match.params.roomId}/game`);
+    }
+  }, [eventState.ready]);
+
 
   return (
     <>
