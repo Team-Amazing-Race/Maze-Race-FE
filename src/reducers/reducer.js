@@ -5,12 +5,12 @@ export const reducer = (state, { type, payload }) => {
       return { ...state, userId: payload };
 
     case 'ROOM_JOIN_DONE': {
-
-      return { ...state, room: { ...state.room, runners: state.room.runners + 1, players: payload.playersInRoom } };
+      console.log(payload, 'PAYLOAD');
+      
+      return { ...state, userId: payload.userId, room: { ...state.room, runners: state.room.runners + 1, players: payload.playersInRoom } };
     }
 
     case 'ROOM_CREATE_DONE': {
-
       return {
         ...state,
         room: payload
@@ -24,7 +24,6 @@ export const reducer = (state, { type, payload }) => {
       return state;
     }
     case 'ENTER_NAME_DONE': {
-
       return { ...state, room: { ...state.room, players: payload } };
     }
 
