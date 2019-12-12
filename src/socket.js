@@ -2,18 +2,26 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import io from 'socket.io-client';
 
-
-
-//const socket = io.connect('http://192.168.1.136:7890'); //kam
-//const socket = io.connect('http://192.168.1.213:7890'); //jose
-const socket = io.connect('ws://localhost:7890');
+// const socket = io.connect('http://192.168.1.136:7890'); //kam
+// const socket = io.connect('http://192.168.1.213:7890'); //jose
+const socket = io.connect('http://localhost:7890');
 
 const SocketContext = createContext(socket);
 
 // eslint-disable-next-line react/prop-types
 export const SocketProvider = ({ children, reducer, eventNames }) => {
 
-  const [state, dispatch] = useReducer(reducer, { rooms: [], userId: null });
+  const [state, dispatch] = useReducer(reducer, {
+    ready: false,
+    room: {
+      players: [],
+      runners: 0,
+      seats: null,
+      name: null
+    },
+    userId: null
+  }
+  );
 
   useEffect(() => {
     eventNames.forEach(eventName => {

@@ -56,7 +56,7 @@ const Game = ({ history }) => {
       <Modal>
         {children}
       </Modal>
-      {eventState.inRoom && eventState.name && <P5Wrapper sketch={sketch} rooms={eventState.rooms} currentRoom={eventState.inRoom} currentPlayer={eventState.name} />}
+      {eventState.inRoom && eventState.name && <P5Wrapper sketch={sketch} state={eventState}  />}
     </>
   );
 };
