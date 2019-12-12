@@ -8,6 +8,7 @@ body {
   background: url('../../assets/img/backimg.jpg') black;
   background-size: cover;
   background-position: center;
+  overflow: hidden;
 }
 
 @font-face {
