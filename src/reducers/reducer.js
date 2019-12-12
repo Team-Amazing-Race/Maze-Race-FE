@@ -1,5 +1,5 @@
 export const reducer = (state, { type, payload }) => {
-  switch (type) {
+  switch(type) {
 
     case 'SET_USER_ID_DONE':
       return { ...state, userId: payload };
@@ -45,29 +45,29 @@ export const reducer = (state, { type, payload }) => {
       });
 
       const newX = () => {
-        if (payload.dir === 'right') {
+        if(payload.dir === 'right') {
           return player.xPos + 1;
         }
-        if (payload.dir === 'left') {
+        if(payload.dir === 'left') {
           return player.xPos - 1;
         }
         return player.xPos;
       };
 
       const newY = () => {
-        if (payload.dir === 'up') {
+        if(payload.dir === 'up') {
           return player.yPos + 1;
         }
-        if (payload.dir === 'down') {
+        if(payload.dir === 'down') {
           return player.yPos - 1;
         }
         return player.yPos;
       };
 
       const newRooms = state.rooms.map(openRoom => {
-        if (openRoom.name === inRoom) {
+        if(openRoom.name === inRoom) {
           const newPlayers = openRoom.players.map(person => {
-            if (person.name === player.name) {
+            if(person.name === player.name) {
               return { ...person, xPos: newX(), yPos: newY() };
             } else {
               return person;
