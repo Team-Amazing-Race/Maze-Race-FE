@@ -20,7 +20,6 @@ const Home = ({ history }) => {
       createRoom({ room: roomId, number: number })
     )
       .then(() => {
-        console.log(eventState);
         history.push(`/${roomId}`);
       }
       );

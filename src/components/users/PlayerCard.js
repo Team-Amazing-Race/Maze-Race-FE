@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 
 const PlayerCard = ({ name, color, symbol }) => {
-  console.log(name, symbol, color, '*****PLAYERCARD');
 
   return (
     <>

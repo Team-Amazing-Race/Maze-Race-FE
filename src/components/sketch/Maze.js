@@ -6,10 +6,10 @@ export default class Maze {
     this.w = w;
     this.cellH = cellH;
     this.cellW = cellW;
-    this.cellMap = cellMap;
+    this.cellMap = JSON.parse(cellMap);
     this.p = p;
   }
-// transfer to state
+  // transfer to state
   // getCellInfo(x, y) {
 
   //   let cell = this.cellMap.find(cell => {
@@ -27,6 +27,7 @@ export default class Maze {
   // }
 
   showCells() {
+
     this.p.stroke(0);
     this.p.strokeWeight(0.5);
     this.p.fill(255);

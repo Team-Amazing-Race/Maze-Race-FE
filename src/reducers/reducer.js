@@ -10,7 +10,6 @@ export const reducer = (state, { type, payload }) => {
     }
 
     case 'ROOM_CREATE_DONE': {
-      console.log(payload);
       return {
         ...state,
         room: payload
@@ -18,7 +17,6 @@ export const reducer = (state, { type, payload }) => {
     }
 
     case 'ROOM_JOIN_PRIVATE_DONE':
-      console.log('REDUCER HIT');
       return { ...state, userId: payload };
 
     case 'ROOM_DISCONNECT': {
@@ -28,7 +26,6 @@ export const reducer = (state, { type, payload }) => {
       return { ...state, room: { ...state.room, runners: state.room.runners + 1, players: payload } };
     }
     case 'READY_DONE':
-      console.log('READY REDUCER');
       return { ...state, ready: true, room: { ...state.room, cellMap: payload } };
 
     case 'MOVE_PLAYER_DONE': {

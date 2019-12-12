@@ -20,7 +20,6 @@ const Lobby = ({ match, history }) => {
 
   const handleName = (event, name, color, symbol) => {
     event.preventDefault();
-    console.log('HANDLENAME', name, color, symbol);
 
     enterName({ name: name, color: color, symbol: symbol, userId: eventState.userId });
   };

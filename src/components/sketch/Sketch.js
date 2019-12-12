@@ -1,62 +1,67 @@
-import Player from './Player.js';
+// import Player from './Player.js';
 import Maze from './Maze.js';
 
 export default function sketch(p) {
 
-  let state;
-  let cellMap;
+  let state = null;
 
-  p.myCustomRedrawAccordingToNewPropsHandler = (props) => {
-    if(props.state) {
-      state = props.state;
-    }
 
-    if(props.cellMap) {
-      cellMap = props.cellMap;
-    }
 
-  };
-
-  let player;
+  // let player;
   let maze;
-  let end;
-  let players;
+  // let end;
+  // let players;
 
   // TODO create players from state.playerslist
 
 
   p.setup = () => {
-    maze = new Maze(p, 20, 20, 20, 20, cellMap);
-    
-    //state
-    // end = maze.getEnd();
-
-
-    players = () => {
-      state.room.players.forEach(playerObj => {
-        return new Player(p, playerObj.xPos, -playerObj.yPos, 0, 0, 10, 10);
-      });
-    };
     p.createCanvas(800, 800);
 
+    if(state) {
+      maze = new Maze(p, 20, 20, 20, 20, state.room.cellMap);
+    } else {
+      setTimeout(() => {
+        p.setup();
+      }, 100);
+    }
+  };
+
+  //state
+  // end = maze.getEnd();
+
+
+  // players = () => {
+  //   state.room.players.forEach(playerObj => {
+  //     return new Player(p, playerObj.xPos, -playerObj.yPos, 0, 0, 10, 10);
+  //   });
+  // };
+
+
+  p.myCustomRedrawAccordingToNewPropsHandler = (newProps) => {
+    if(newProps.state) {
+      state = newProps.state;
+    }
   };
 
 
   p.draw = () => {
     p.background(220);
-    maze.showCells();
 
-    //edit for all players
-    players.forEach(user => {
-      user.show();
-    });
-
-    if(player.xPos === end[0] && player.yPos === end[1]) {
-      p.fill(0);
-      p.rect(20, 30, 200, 200);
-      p.fill(0, 102, 153);
-      p.text('you freakin win', 120, 120);
+    if(maze && maze.cellMap) {
+      maze.showCells();
     }
+    // //edit for all players
+    // players.forEach(user => {
+    //   user.show();
+    // });
+
+    // if(player.xPos === end[0] && player.yPos === end[1]) {
+    //   p.fill(0);
+    //   p.rect(20, 30, 200, 200);
+    //   p.fill(0, 102, 153);
+    //   p.text('you freakin win', 120, 120);
+    // }
 
 
 
