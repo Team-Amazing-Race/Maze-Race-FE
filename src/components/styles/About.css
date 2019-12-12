@@ -64,4 +64,9 @@
       }
     }
   }
+
+  li::marker{
+    color: black;
+
+  }
 }

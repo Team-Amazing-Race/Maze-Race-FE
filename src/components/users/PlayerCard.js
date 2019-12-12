@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from '../styles/PlayerCard.css';
 
 
 const PlayerCard = ({ name, color, symbol, ready }) => {
 
   return (
-    <>
-      <p style={{ color: 'white' }}>{name}</p>
-      <div style={{ backgroundColor: color }}>
-        <span>{symbol}</span>
+    <div className={styles.PlayerCard}>
+      <p>{name}</p>
+      <div data-status={{ ready }} className={styles.PlayerReady} style={{ backgroundColor: color }}>
+        <div>{symbol}</div>
       </div>
-      <p>{ready ? '✔' : '✗'}</p>
-    </>
+      <p>{ready ? '✅' : '❌'}</p>
+    </div>
   );
 
 };

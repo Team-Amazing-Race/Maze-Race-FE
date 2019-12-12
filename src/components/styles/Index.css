@@ -4,8 +4,12 @@
 
 body {
   height: 100vh;
-  width: 120vw;
-  background-color: black;
+  width: 100vw;
+  background: url('../../assets/img/backimg.jpg') black;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 }
 
 @font-face {
