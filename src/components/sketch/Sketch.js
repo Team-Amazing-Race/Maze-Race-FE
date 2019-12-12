@@ -1,96 +1,67 @@
-// import Player from './Player.js';
-import Maze from './Maze.js';
+import Player from './Player';
+import Maze from './Maze';
+import MazeData from './MazeData';
 
-export default function sketch(p) {
+let xPos = 1;
+let yPos = 20;
+let player;
+let maze;
+let mazeData;
+let end;
+let img;
 
-  let state = null;
-
-
-
-  // let player;
-  let maze;
-  // let end;
-  // let players;
-
-  // TODO create players from state.playerslist
-
-
-  p.setup = () => {
-    p.createCanvas(800, 800);
-
-    if(state) {
-      maze = new Maze(p, 20, 20, 20, 20, state.room.cellMap);
-    } else {
-      setTimeout(() => {
-        p.setup();
-      }, 100);
-    }
-  };
-
-  //state
-  // end = maze.getEnd();
+export default function setup(p) {
+  player = new Player(xPos, yPos, 40, 40, 20, 20);
+  mazeData = new MazeData();
+  maze = new Maze(20, 20, 20, 20, mazeData.data());
+  end = maze.getEnd();
 
 
-  // players = () => {
-  //   state.room.players.forEach(playerObj => {
-  //     return new Player(p, playerObj.xPos, -playerObj.yPos, 0, 0, 10, 10);
-  //   });
-  // };
+  img = p.loadImage('assets/spacebg.jpg', img => {
+    p.image(img, 480, 480);
+  });
 
 
-  p.myCustomRedrawAccordingToNewPropsHandler = (newProps) => {
-    if(newProps.state) {
-      state = newProps.state;
-    }
-  };
+  p.createCanvas(480, 480);
 
-
-  p.draw = () => {
-    p.background(220);
-
-    if(maze && maze.cellMap) {
-      maze.showCells();
-    }
-    // //edit for all players
-    // players.forEach(user => {
-    //   user.show();
-    // });
-
-    // if(player.xPos === end[0] && player.yPos === end[1]) {
-    //   p.fill(0);
-    //   p.rect(20, 30, 200, 200);
-    //   p.fill(0, 102, 153);
-    //   p.text('you freakin win', 120, 120);
-    // }
-
-
-
-  };
 }
 
+export function draw(p) {
+
+  //BACKGROUND COLOR
+  p.background(img);
 
 
+  maze.showCells();
+  player.show();
 
-//transfer this functionality to state
+  if(player.xPos === end[0] && player.yPos === end[1]) {
+    p.fill(0);
+    p.rect(20, 40, 400, 400);
+    p.fill(0, 102, 153);
+    p.text('you freakin win', 120, 120);
+  }
 
-// function keyPressed() {
+}
+
+// export function keyPressed() {
 
 //   let moves = maze.getCellInfo(player.xPos, player.yPos);
 
 //   if(keyCode === UP_ARROW) {
-//     player.updateCoords('yPos', 1, -10, moves);
+//     player.updateCoords('yPos', 1, -20, moves);
 //   }
 //   if(keyCode === DOWN_ARROW) {
-//     player.updateCoords('yPos', -1, 10, moves);
+//     player.updateCoords('yPos', -1, 20, moves);
 
 //   }
 
 //   if(keyCode === LEFT_ARROW) {
-//     player.updateCoords('xPos', -1, -10, moves);
+//     player.updateCoords('xPos', -1, -20, moves);
 
 
 //   } if(keyCode === RIGHT_ARROW) {
-//     player.updateCoords('xPos', 1, 10, moves);
+//     player.updateCoords('xPos', 1, 20, moves);
 
 //   }
 // }

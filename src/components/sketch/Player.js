@@ -9,21 +9,24 @@ export default class Player {
     this.p = p;
   }
   show() {
+
+    //PLAYER LOOK
+
     this.p.noStroke();
-    this.p.fill(0);
-    this.p.rect(this.x, this.y, this.h, this.w);
+    this.p.fill('#ff0000');
+    this.p.rect(this.x, this.y, this.h - 1, this.w - 1);
+    this.p.fill(255);
+    this.p.text('@', this.x, this.y + this.w - 2);
+    this.p.textAlign(LEFT, BASELINE);
+    this.p.textSize(20);
   }
 
+  move(axis, dir) {
 
-  //transfer to state
-  
-  // move(axis, dir) {
-
-  //   this[axis[0]] += dir;
+    this[axis[0]] += dir;
 
   }
 
-  //transfer to state
   updateCoords(axis, dir, xyDir, moves) {
 
 
