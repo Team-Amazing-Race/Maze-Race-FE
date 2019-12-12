@@ -18,10 +18,10 @@ const Lobby = ({ match, history }) => {
     joinRoom({ ...eventState, userId, inRoom: match.params.roomId });
   }, []);
 
-  const handleName = (event, name, color, symbol) => {
+  const handleName = (event, name, color, symbol, ready) => {
     event.preventDefault();
 
-    enterName({ name: name, color: color, symbol: symbol, userId: eventState.userId });
+    enterName({ name: name, color: color, symbol: symbol, ready: ready, userId: eventState.userId });
   };
 
   const colors = ['#FF0000', '#FE8300', '#FFF800', '#4AF441', '#56F0F9', '#0086FF', '#5E28FF', '#FF00F9'];

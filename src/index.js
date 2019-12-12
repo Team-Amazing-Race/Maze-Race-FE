@@ -5,7 +5,7 @@ import { SocketProvider } from './socket';
 import '../src/components/styles/reset.css';
 import '../src/components/styles/Index.css';
 import { reducer } from './reducers/reducer';
-
+import styles from './components/styles/Index.css';
 render(
   <SocketProvider reducer={reducer} eventNames={
     ['ROOM_JOIN_DONE',
