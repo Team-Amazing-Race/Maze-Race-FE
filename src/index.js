@@ -13,9 +13,10 @@ render(
       'MOVE_PLAYER_DONE',
       'ROOM_JOIN_PRIVATE_DONE',
       'ROOM_CREATE_DONE',
-      'SET_USER_ID_DONE']
+      'SET_USER_ID_DONE',
+      'READY_DONE']
   }>
-    <App />
+    <App className={styles.index} />
 
   </SocketProvider>,
   document.getElementById('root')

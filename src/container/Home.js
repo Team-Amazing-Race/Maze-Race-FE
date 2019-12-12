@@ -11,16 +11,15 @@ const Home = ({ history }) => {
 
   const { createRoom } = useGameEmitters();
   const eventState = useGameState();
-  
+
   const handleRoomCreate = (event, number) => {
     event.preventDefault();
     const roomId = shortId.generate();
     Promise.resolve(
 
-      createRoom({ room: roomId, number: number, userId: eventState.userId })
+      createRoom({ room: roomId, number: number })
     )
       .then(() => {
-        console.log(eventState);
         history.push(`/${roomId}`);
       }
       );
