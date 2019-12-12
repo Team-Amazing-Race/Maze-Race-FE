@@ -1,5 +1,10 @@
 .AboutElements {
-  li{
+  li {
     color: white;
+  }
+
+  li::marker{
+    color: black;
+
   }
 }
