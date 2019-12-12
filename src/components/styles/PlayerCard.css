@@ -10,6 +10,12 @@
   align-items: center;
   justify-content: center;
 
+   img{
+    height: 5vh;
+    width: 5vw;
+  }
+
+
   p {
     color: white;
     font-family: "joystix";
