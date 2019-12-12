@@ -18,7 +18,8 @@ export const SocketProvider = ({ children, reducer, eventNames }) => {
       players: [],
       runners: 0,
       seats: null,
-      name: null
+      name: null,
+      cellMap: null
     },
     userId: null
   }

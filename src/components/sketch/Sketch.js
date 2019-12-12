@@ -26,7 +26,7 @@ export default function sketch(p) {
 
 
   p.setup = () => {
-    maze = new Maze(p, 20, 20, 10, 10, cellMap);
+    maze = new Maze(p, 20, 20, 20, 20, cellMap);
     
     //state
     // end = maze.getEnd();
