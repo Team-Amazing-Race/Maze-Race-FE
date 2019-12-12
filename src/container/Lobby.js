@@ -7,12 +7,20 @@ import useGameEmitters from '../components/hooks/gameState';
 
 const shortId = require('shortid');
 
+let readyCounter = 0;
+
 const Lobby = ({ match, history }) => {
 
   const { setUserId, joinRoomPrivate, enterName, joinRoom } = useGameEmitters();
   const eventState = useGameState();
   const [playerList, setPlayerList] = useState(null);
+  const [seats, setSeats] = useState(null);
+  const [gameStart, setGameStart] = useState(false);
 
+
+
+  console.log(readyCounter, 'READY COUNTER');
+  
   useEffect(() => {
     let inRoom = null;
     if(playerList){
@@ -29,6 +37,7 @@ const Lobby = ({ match, history }) => {
       joinRoom({ ...eventState, userId });
     
     }
+
   }, []);
 
   useEffect(() => {
@@ -37,16 +46,24 @@ const Lobby = ({ match, history }) => {
         return door.name === eventState.inRoom;
       });
       setPlayerList(room.players || []);
-
-    }     
-  }, [eventState.rooms, eventState.inRoom, eventState.userId]);
-
-
-  const handleName = (event, name, color, symbol) => {
-    event.preventDefault();
-    console.log('HANDLENAME', name, color, symbol);
+      setSeats(room.seats);
+    }
     
-    enterName({ name: name, color: color, symbol: symbol, state: eventState });
+    if(gameStart){
+      history.push(`/${eventState.inRoom}/game`);
+    }
+  }, [eventState.rooms, eventState.inRoom, eventState.userId, gameStart]);
+
+
+  const handleName = (event, name, color, symbol, ready) => {
+    event.preventDefault();
+    
+    readyCounter++;
+    console.log(readyCounter);
+    enterName({ name: name, color: color, symbol: symbol, ready: ready, state: eventState });
+    if(readyCounter === seats){
+      setGameStart(true);
+    }
   };
 
   const colors = ['#FF0000', '#FE8300', '#FFF800', '#4AF441', '#56F0F9', '#0086FF', '#5E28FF', '#FF00F9'];

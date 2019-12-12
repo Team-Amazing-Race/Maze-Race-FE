@@ -7,10 +7,11 @@ const PlayerSelection = ({ handleSubmit, colors, symbols }) => {
   const [name, setName] = useState('');
   const [symbol, setSymbol] = useState('');
   const [color, setColor] = useState('');
+  const [ready, setReady] = useState(false);
   
   const selectionElements = colors.map((color, i) => (
     <>
-      <input type="radio" id={color} value={symbols[i]} name="playerSelections" onClick={({ target }) => { setSymbol(target.value); setColor(target.id);}}/>
+      <input type="radio" id={color} value={symbols[i]} name="playerSelections" onClick={({ target }) => { setSymbol(target.value); setColor(target.id); }}/>
       <label key={i} style={{ backgroundColor: color }} htmlFor={color} >
         {symbols[i]}
       </label>
@@ -18,12 +19,12 @@ const PlayerSelection = ({ handleSubmit, colors, symbols }) => {
   ));
 
   return (
-    <form onSubmit={(event) => handleSubmit(event, name, color, symbol)} className={styles.PlayerForm}>
+    <form onSubmit={(event) => { handleSubmit(event, name, color, symbol, ready); setReady(true); }} className={styles.PlayerForm}>
       <input className={styles.PlayerName} type="text" value={name} onChange={({ target }) => setName(target.value)} />
       <div className={styles.ButtonContainer}>
         {selectionElements}
       </div>
-      <button>Start</button>
+      <button disabled={ready}>Start</button>
     </form>
   );
 
