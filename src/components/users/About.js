@@ -1,5 +1,4 @@
 import React from 'react';
-//import styles from './styles/About.css';
 import AboutCard from './AboutCard';
 import aboutProps from './AboutProps';
 import styles from '../styles/About.css';

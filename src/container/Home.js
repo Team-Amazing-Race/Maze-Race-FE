@@ -27,11 +27,11 @@ const Home = ({ history }) => {
   };
 
   return (
-    <>
+    <div className={styles.Home}>
       <h1>Basic Ass Maze Game</h1>
       <h2>Enter Number of Players 1-8:</h2>
-      <PlayersForm className={styles.input} handleSubmit={handleRoomCreate} type="number" />
-    </>
+      <PlayersForm handleSubmit={handleRoomCreate} type="number" />
+    </div>
   );
 };
 

@@ -2,10 +2,6 @@
   box-sizing: border-box;
 }
 
-html {
-  height: 100vw;
-}
-
 body {
   height: 100vh;
   width: 100vw;

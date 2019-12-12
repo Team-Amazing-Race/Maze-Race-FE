@@ -1,11 +1,10 @@
 .Devs {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   
   h3 {
     color: white;
-    font-size: 2.5em;
+    font-size: 1.2em;
     font-family: "KARNIVOT";
     background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
     background: linear-gradient(to top, #ff00ee, #00c3ff); 
