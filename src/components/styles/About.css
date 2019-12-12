@@ -2,12 +2,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 
   h2 {
     color: white;
     font-size: 2.5em;
     font-family: "KARNIVOT";
-
+    background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
     background: linear-gradient(to top, #ff00ee, #00c3ff); 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -15,25 +17,24 @@
 
   ul {
     display: flex;
-    flex-direction: column;
-    color: white;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
     
     h3 {
     color: white;
-    font-size: 2.5em;
+    font-size: 2em;
     font-family: "KARNIVOT";
+    background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
     background: linear-gradient(to top, #ff00ee, #00c3ff); 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    align-self: center;
-  
+    margin: 55px 0px;
+    
     }
 
     img {
       height: 100px;
       width: 100px;
+      justify-content: center;
     }
 
     p {
