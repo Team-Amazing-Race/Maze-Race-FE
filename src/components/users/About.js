@@ -1,5 +1,4 @@
 import React from 'react';
-//import styles from './styles/About.css';
 import AboutCard from './AboutCard';
 import aboutProps from './AboutProps';
 import styles from '../styles/About.css';
@@ -14,12 +13,12 @@ const About = () => {
   });
 
   return (
-    <>
+    <div className={styles.AboutElements}>
       <h2>Meet The Developers</h2>
-      <ul className={styles.AboutElements}>
+      <ul>
         {aboutElements}
       </ul>
-    </>
+    </div>
   );
 };
 

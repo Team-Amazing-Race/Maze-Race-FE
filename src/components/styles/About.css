@@ -1,5 +1,72 @@
 .AboutElements {
-  li{
-    color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-image: url('https://us.123rf.com/450wm/kentoh/kentoh1007/kentoh100700157/7312817-seamless-galaxy-in-outer-space-background-as-art.jpg?ver=6');
+
+  h2 {
+    font-size: 2.5em;
+    font-family: "KARNIVOT";
+    background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
+    background: linear-gradient(to top, #ff00ee, #00c3ff); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 10vh;
+  }
+
+  ul {
+    display: flex;
+
+  
+    li{
+      @font-face {
+        font-family: "joystix";
+        src: url('../../assets/fonts/joystix.ttf')
+        }
+      
+        display: flex;
+        flex-direction: column;
+        width: 30vw;
+
+      h3 {
+        font-size: 2.5em;
+        font-family: "KARNIVOT";
+        background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
+        background: linear-gradient(to top, #ff00ee, #00c3ff); 
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-top: 10vh;
+        margin: 55px 0px;
+        text-align: center;
+      }
+  
+      img {
+        height: 40vh;
+        width: 20vw;
+        margin: 0px 20px;
+        align-self: center;
+      }
+  
+      p {
+        width: auto;
+        font-size: 1.6em;
+        font-family: "joystix";
+        background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
+        background: linear-gradient(to top, #ff00ee, #00c3ff); 
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 3vh;
+        text-align: center;
+        overflow: normal;
+        margin: 0px 10px;
+      }
+    }
+  }
+
+  li::marker{
+    color: black;
+
   }
 }
