@@ -7,6 +7,8 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10vh;
 
   .PlayerName {
     width: 20vw;
@@ -64,6 +66,13 @@
   button {
     align-self: center;
     color: black;
+    width: 20vw;
+    height: 6vh;
+    background:  -webkit-gradient(linear,left top,left bottom,from(#ff00ee),to(#00c3ff));
+    border: none;
+    border-radius: 2%;
+    font-size: 3.8vh;
+    font-family: "KARNIVOT";
     -moz-box-shadow:    inset 0 0 5px 1px #000000;
     -webkit-box-shadow: inset 0 0 5px 1px #000000;
     box-shadow:         inset 0 0 5px 1px #000000;

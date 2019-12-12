@@ -8,8 +8,8 @@ const PlayerCard = ({ name, color, symbol, ready }) => {
   return (
     <div className={styles.PlayerCard}>
       <p>{name}</p>
-      <div style={{ backgroundColor: color }}>
-        <span>{symbol}</span>
+      <div data-status={{ ready }} className={styles.PlayerReady} style={{ backgroundColor: color }}>
+        <div>{symbol}</div>
       </div>
       <p>{ready ? '✅' : '❌'}</p>
     </div>
