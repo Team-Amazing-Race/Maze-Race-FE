@@ -4,14 +4,15 @@ import styles from '../styles/PlayerCard.css';
 
 
 const PlayerCard = ({ name, color, symbol, ready }) => {
-
+  console.log('TEST LOG****', ready);
+  
   return (
     <div className={styles.PlayerCard}>
       <p>{name}</p>
       <div data-status={{ ready }} className={styles.PlayerReady} style={{ backgroundColor: color }}>
         <div>{symbol}</div>
       </div>
-      <p>{ready ? '✅' : '❌'}</p>
+      <img src={ready ? 'src/assets/img/check.png' : 'src/assets/img/x.png'}></img>
     </div>
   );
 
