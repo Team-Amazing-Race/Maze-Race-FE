@@ -1,20 +1,24 @@
-
-html {
-  height: 100vh;
-  width: 100vw;
+* {
+  box-sizing: border-box;
 }
 
 body {
   height: 100vh;
   width: 100vw;
   background-color: black;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
 }
 
-.index {
-  box-sizing: border-box;
+@font-face {
+  font-family: "Maze"; 
+  src: url('../../assets/fonts/Maze.ttf')
+}
+
+@font-face {
+  font-family: "KARNIVOT"; 
+  src: url('../../assets/fonts/KARNIVOT.ttf')
+}
+
+@font-face {
+  font-family: "KARNIVBL"; 
+  src: url('../../assets/fonts/KARNIVBL.ttf')
 }
