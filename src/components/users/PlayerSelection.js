@@ -7,6 +7,7 @@ const PlayerSelection = ({ handleSubmit, colors, symbols }) => {
   const [name, setName] = useState('');
   const [symbol, setSymbol] = useState('');
   const [color, setColor] = useState('');
+  const [ready, setReady] = useState(false);
   
   const selectionElements = colors.map((color, i) => (
     <>
@@ -18,12 +19,12 @@ const PlayerSelection = ({ handleSubmit, colors, symbols }) => {
   ));
 
   return (
-    <form onSubmit={(event) => handleSubmit(event, name, color, symbol)} className={styles.PlayerForm}>
+    <form onSubmit={(event) => {  setReady(true); handleSubmit(event, name, color, symbol, true); }} className={styles.PlayerForm}>
       <input className={styles.PlayerName} type="text" value={name} onChange={({ target }) => setName(target.value)} />
       <div className={styles.ButtonContainer}>
         {selectionElements}
       </div>
-      <button>Start</button>
+      <button disabled={ready}>Start</button>
     </form>
   );
 

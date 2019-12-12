@@ -6,11 +6,11 @@ const AboutCard = ({ name, image, desc }) => {
 
 
   return (
-    <div className={StyleSheet.Devs}>
+    <>
       <h3>{name}</h3>
       <img src={image}></img>
       <p>{desc}</p>
-    </div>
+    </>
   );
 
 };

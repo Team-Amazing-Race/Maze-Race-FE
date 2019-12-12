@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react';
 import P5Wrapper from 'react-p5-wrapper';
-
-import Modal from '../components/Modal';
 import sketch from '../components/sketch/Sketch';
 import PropTypes from 'prop-types';
 import { useGameState } from '../socket';
 import useGameEmitters from '../components/hooks/gameState';
 
 
-const Game = ({ history }) => {
+const Game = ({ match, history }) => {
 
   // State
   const { movePlayer } = useGameEmitters();
@@ -41,23 +39,10 @@ const Game = ({ history }) => {
 
 
 
-
-  // Check if in room
-
-  // let children;
-
-
-  //Results screen
-  // if(winner && isOpen) {
-  //   children = <ResultMessage winner={winner} handleSubmit={handleReset} />;
-  // }
-
   return (
     <>
-      <Modal>
-        {children}
-      </Modal>
-      {eventState.inRoom && eventState.name && <P5Wrapper sketch={sketch} rooms={eventState.rooms} currentRoom={eventState.inRoom} currentPlayer={eventState.name} />}
+      <h1>GAME</h1>
+      <P5Wrapper sketch={sketch} state={eventState} />
     </>
   );
 };
