@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "joystix"; 
+  src: url('../../assets/fonts/joystix.ttf')
+}
+
+.PlayerCard {
+  display: flex;
+  flex-direction: row;
+  margin: 1vh 0vw;
+
+  p {
+    color: white;
+    font-family: "joystix";
+    font-size: 3vh;
+    margin: 2vh 4vw;
+  }
+
+  div {
+    border-radius: 1vw;
+  }
+
+  span {
+    display: flex;
+    flex-direction: row;
+    width: 5vw;
+    height: 5vh;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto-Bold";
+    font-size: 3vh;
+    -moz-box-shadow:    inset 0 0 5px 1px #000000;
+    -webkit-box-shadow: inset 0 0 5px 1px #000000;
+    box-shadow:         inset 0 0 5px 1px #000000;
+  }
+}
