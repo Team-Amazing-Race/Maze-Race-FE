@@ -6,17 +6,17 @@
   },
   {
     "name": "Kamran Ali",
-    "image": "src/assets/img/",
-    "desc": "My name is Kam, I am a full-stack software developer that has proficiency in back-end Javascript node packages like express, and the front-end framework react/redux. I also have a strong background in Digital Design. I am very passionate about clean code and design, because I really want communication between the user and the developers clear."
+    "image": "src/assets/img/dylan.jpg",
+    "desc": "My name is Kam, a full-stack software developer that has proficiency in back-end Javascript node packages like express, and the front-end framework react/redux. I also have a strong background in Digital Design. I am very passionate about clean code and design, because I really want communication between the user and the developers clear."
   },
   {
     "name": "Sam Jespersen",
     "image": "src/assets/img/",
-    "desc": "Morty at heart, Jerry in practice. My name is Kam, I am a full-stack software developer that has proficiency in back-end Javascript node packages like express, and the front-end framework react/redux. I also have a strong background in Digital Design. I am very passionate about clean code and design, because I really want communication between the user and the developers clear."
+    "desc": "Morty at heart, Jerry in practice."
   },
   {
     "name": "Jose Ojeda",
     "image": "src/assets/img/",
-    "desc": "Great Hair, Dad Jokes, Karaoke, Cardigan, Gator Mode. My name is Kam, I am a full-stack software developer that has proficiency in back-end Javascript node packages like express, and the front-end framework react/redux. I also have a strong background in Digital Design. I am very passionate about clean code and design, because I really want communication between the user and the developers clear."
+    "desc": "Great Hair, Dad Jokes, Karaoke, Cardigan, Gator Mode."
   }
 ]

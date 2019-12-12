@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  background-image: url('https://us.123rf.com/450wm/kentoh/kentoh1007/kentoh100700157/7312817-seamless-galaxy-in-outer-space-background-as-art.jpg?ver=6');
 
   h2 {
     color: white;
@@ -13,38 +14,47 @@
     background: linear-gradient(to top, #ff00ee, #00c3ff); 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-top: 10vh;
   }
 
   ul {
-    display: flex;
-    flex-direction: row;
-    
-    h3 {
-    color: white;
-    font-size: 2em;
-    font-family: "KARNIVOT";
-    background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
-    background: linear-gradient(to top, #ff00ee, #00c3ff); 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 55px 0px;
-    
-    }
-
-    img {
-      height: 100px;
-      width: 100px;
+      display: flex;
+      flex-direction: row;
+      margin: 0px 25px;
       justify-content: center;
-    }
+      align-content: center;
 
-    p {
-    color: white;
-    font-size: 1.2em;
-    font-family: "KARNIVOT";
-    background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
-    background: linear-gradient(to top, #ff00ee, #00c3ff); 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    }
+      h3 {
+        color: white;
+        font-size: 2em;
+        font-family: "KARNIVOT";
+        background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
+        background: linear-gradient(to top, #ff00ee, #00c3ff); 
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 55px 0px;
+        text-align: center;
+      }
+  
+      img {
+        height: 20vh;
+        width: 20vw;
+        margin: 0px 20px;
+      }
+  
+      p {
+        color: white;
+        width: auto;
+        font-size: 1.6em;
+        font-family: "KARNIVOT";
+        background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
+        background: linear-gradient(to top, #ff00ee, #00c3ff); 
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 3vh;
+        text-align: start;
+        overflow: normal;
+        margin: 0px 10px;
+      }
   }
 }
