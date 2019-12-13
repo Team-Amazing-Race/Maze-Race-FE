@@ -45,7 +45,7 @@ const Game = ({ match, history }) => {
   return (
     <div className={styles.P5WrapperTop}>
       <P5Wrapper sketch={sketch} players={eventState.room.players} cellMap={eventState.room.cellMap} />
-      <audio src='../src/assets/sound/outruntheempire.mp3' controls autoPlay />
+      <audio src={outruntheempire} controls autoPlay />
       <p>Race to the finish!</p>
     </div>
   );
