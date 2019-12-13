@@ -23,6 +23,11 @@ body {
 }
 
 @font-face {
-  font-family: "KARNIVBL"; 
-  src: url('../../assets/fonts/KARNIVBL.ttf')
+  font-family: "joystix";
+  src: url('../../assets/fonts/joystix.ttf')
+  }
+
+@font-face {
+  font-family: "Roboto-Bold"; 
+  src: url('../../assets/fonts/Roboto-Bold.ttf')
 }

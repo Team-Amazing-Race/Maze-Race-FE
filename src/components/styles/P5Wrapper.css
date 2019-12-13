@@ -1,24 +1,20 @@
-.Devs {
+.P5WrapperTop {
   display: flex;
   flex-direction: column;
-  
-  h3 {
-    color: white;
-    font-size: 1.2em;
+  justify-content: center;
+  align-items: center;
+  margin: 5vh 0vh;
+
+  h1 {
+    font-size: 4em;
     font-family: "KARNIVOT";
     background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
     background: linear-gradient(to top, #ff00ee, #00c3ff); 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
-  
-  img {
-    height: 100px;
-    width: 100px;
+    margin-bottom: 5vh;
   }
 
-  p{
-    word-break: normal;
-  }
 
-};
+
+}

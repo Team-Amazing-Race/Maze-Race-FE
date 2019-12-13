@@ -4,6 +4,7 @@ import sketch from '../components/sketch/Sketch';
 import PropTypes from 'prop-types';
 import { useGameState } from '../socket';
 import useGameEmitters from '../components/hooks/gameState';
+import styles from '../components/styles/P5Wrapper.css';
 
 
 const Game = ({ match, history }) => {
@@ -13,7 +14,6 @@ const Game = ({ match, history }) => {
   const eventState = useGameState();
 
   //Keypress logic
-
   const keyDownListener = (event) => {
     const keyName = event.key;
     if(keyName === 'ArrowUp') {
@@ -35,14 +35,19 @@ const Game = ({ match, history }) => {
     return () => {
       window.removeEventListener('keydown', keyDownListener);
     };
+  }, [eventState.winner]);
+
+  useEffect(() => {
+    if(eventState.winner) {
+      history.push(`/${match.params.room}/results`);
+    }
   });
 
-
-
   return (
-    <>
+    <div className={styles.P5WrapperTop}>
       <P5Wrapper sketch={sketch} players={eventState.room.players} cellMap={eventState.room.cellMap} />
-    </>
+      <audio src='../src/assets/sound/outruntheempire.mp3' controls autoPlay />
+    </div>
   );
 };
 
