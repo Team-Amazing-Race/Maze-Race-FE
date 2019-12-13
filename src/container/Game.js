@@ -42,7 +42,7 @@ const Game = ({ match, history }) => {
   return (
     <>
       <h1>GAME</h1>
-      <P5Wrapper sketch={sketch} state={eventState} />
+      <P5Wrapper sketch={sketch} players={eventState.room.players} cellMap={eventState.room.cellMap} />
     </>
   );
 };
