@@ -13,7 +13,6 @@ const Game = ({ match, history }) => {
   const eventState = useGameState();
 
   //Keypress logic
-
   const keyDownListener = (event) => {
     const keyName = event.key;
     if(keyName === 'ArrowUp') {
@@ -35,9 +34,13 @@ const Game = ({ match, history }) => {
     return () => {
       window.removeEventListener('keydown', keyDownListener);
     };
+  }, [eventState.winner]);
+
+  useEffect(() => {
+    if(eventState.winner) {
+      history.push(`/${match.params.room}/results`);
+    }
   });
-
-
 
   return (
     <>

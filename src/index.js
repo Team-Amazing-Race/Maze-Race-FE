@@ -14,7 +14,8 @@ render(
       'ROOM_JOIN_PRIVATE_DONE',
       'ROOM_CREATE_DONE',
       'SET_USER_ID_DONE',
-      'READY_DONE']
+      'READY_DONE',
+      'WINNER']
   }>
     <App className={styles.index} />
 

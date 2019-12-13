@@ -3,19 +3,15 @@ export const reducer = (state, { type, payload }) => {
 
     case 'SET_USER_ID_DONE':
       return { ...state, userId: payload };
-
     case 'ROOM_JOIN_DONE': {
-
       return { ...state, room: { ...state.room, players: payload.playersInRoom } };
     }
-
     case 'ROOM_CREATE_DONE': {
       return {
         ...state,
         room: payload
       };
     }
-
     case 'ROOM_JOIN_PRIVATE_DONE':
       return { ...state, userId: payload };
 
@@ -30,6 +26,9 @@ export const reducer = (state, { type, payload }) => {
 
     case 'MOVE_PLAYER_DONE': {
       return { ...state, room: { ...state.room, players: payload } };
+    }
+    case 'WINNER': {
+      return { ...state, winner: payload };
     }
     default:
       return state;
