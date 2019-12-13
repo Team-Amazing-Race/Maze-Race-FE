@@ -20,10 +20,13 @@ const PlayerSelection = ({ handleSubmit, colors, symbols }) => {
 
   return (
     <form onSubmit={(event) => {  setReady(true); handleSubmit(event, name, color, symbol, true); }} className={styles.PlayerForm}>
+      <p>Enter Name: </p>
       <input className={styles.PlayerName} type="text" value={name} onChange={({ target }) => setName(target.value)} />
+      <p>Choose Color: </p>
       <div className={styles.ButtonContainer}>
         {selectionElements}
       </div>
+      <p>Send Url For Players to Join and then press start: </p>
       <button disabled={ready}>Start</button>
     </form>
   );
