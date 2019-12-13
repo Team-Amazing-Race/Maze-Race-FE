@@ -7,7 +7,6 @@ import useGameEmitters from '../components/hooks/gameState';
 
 const shortId = require('shortid');
 
-
 const Lobby = ({ match, history }) => {
 
   const { enterName, joinRoom, setReady } = useGameEmitters();
@@ -36,8 +35,6 @@ const Lobby = ({ match, history }) => {
       history.push(`/${match.params.roomId}/game`);
     }
   }, [eventState.ready]);
-
-
 
   const colors = ['#FF0000', '#FE8300', '#FFF800', '#4AF441', '#56F0F9', '#0086FF', '#5E28FF', '#FF00F9'];
   const symbols = ['@', 'Ø', 'Δ', 'λ', 'π', 'µ', 'ß', 'Σ'];
