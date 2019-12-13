@@ -13,7 +13,7 @@ const PlayersList = ({ players }) => {
   });
 
   return (
-    <ul className={styles.PlayersList}>
+    <ul className={styles.PlayerList}>
       {playerElements}
     </ul>
 
