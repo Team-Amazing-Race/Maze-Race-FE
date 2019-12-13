@@ -15,7 +15,8 @@ render(
       'ROOM_CREATE_DONE',
       'SET_USER_ID_DONE',
       'READY_DONE',
-      'WINNER']
+      'WINNER',
+      'RESET_DONE']
   }>
     <App className={styles.index} />
 

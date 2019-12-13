@@ -4,7 +4,8 @@ import io from 'socket.io-client';
 
 //const socket = io.connect('http://192.168.1.136:7890'); //kam
 // const socket = io.connect('http://192.168.1.213:7890'); //jose
-const socket = io.connect('https://maze-race.herokuapp.com/');
+const socket = io.connect('http://localhost:7890'); //jose
+// const socket = io.connect('https://maze-race.herokuapp.com/');
 
 const SocketContext = createContext(socket);
 
@@ -53,7 +54,9 @@ export const useGameState = () => {
 
 export const useEmitEvent = eventName => {
   const socket = useSocket();
+  
   return data => {
+    console.log({ eventName });
     socket.emit(eventName, data);
   };
 };

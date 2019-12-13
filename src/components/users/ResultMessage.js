@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ResultMessage = ({ handleSubmit, name, winner }) => {
+const ResultMessage = ({ handleSubmit, name, winner, userId }) => {
+
+  
 
   return (
     <>
       <h1>
-        {name === winner ? 'You win!' : 'You Lost'}
+        {userId === winner ? 'You win!' : `${name} won! Get good scrub.`}
       </h1>
-      <button onClick={handleSubmit}>Play Again?</button>
+      <button onClick={() => handleSubmit()}>Play Again?</button>
+      <link></link>
     </>
   );
 };
@@ -16,7 +19,8 @@ const ResultMessage = ({ handleSubmit, name, winner }) => {
 ResultMessage.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   name: PropTypes.string,
-  winner: PropTypes.string
+  winner: PropTypes.string,
+  userId: PropTypes.string
 };
 
 export default ResultMessage;

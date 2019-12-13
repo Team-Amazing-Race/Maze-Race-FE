@@ -8,8 +8,6 @@ import styles from '../components/styles/P5Wrapper.css';
 
 
 const Game = ({ match, history }) => {
-  console.log(match.params.roomId);
-  
   // State
   const { movePlayer } = useGameEmitters();
   const eventState = useGameState();
