@@ -16,6 +16,14 @@
     margin-bottom: 5vh;
   }
 
+  p {
+    font-size: 2em;
+    font-family: "joystix";
+    color: white;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+  }
+
   audio {
     display: none;
   }

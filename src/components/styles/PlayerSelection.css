@@ -3,7 +3,15 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: 10vh;
+  margin-top: 2vh;
+
+  p {
+    font-size: 2em;
+    font-family: "joystix";
+    color: white;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+  }
 
   .PlayerName {
     width: 20vw;

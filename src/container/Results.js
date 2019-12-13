@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ResultMessage from '../components/users/ResultMessage';
 import { useGameState } from '../socket';
+import styles from '../components/styles/Results.css';
 import useGameEmitters from '../components/hooks/gameState';
 
 const Results = ({ history }) => {
@@ -14,9 +15,10 @@ const Results = ({ history }) => {
     history.push('/');
   };
   
-  
   return (
-    <ResultMessage handleSubmit={handleReset} name={eventState.winner.name} winner={eventState.winner.userId} userId={eventState.userId} />
+    <div className={styles.Results}>
+      <ResultMessage handleSubmit={handleReset} name={eventState.winner.name} winner={eventState.winner.userId} userId={eventState.userId} />
+    </div>
   );
 };
 
