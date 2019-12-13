@@ -8,7 +8,7 @@ import Home from '../container/Home';
 import Lobby from '../container/Lobby';
 import Game from '../container/Game';
 import About from './users/About';
-import Results from '../users/Results';
+import Results from '../container/Results';
 
 export default function App() {
   return (

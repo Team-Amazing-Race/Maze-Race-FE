@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Home from '../../container/Home';
+import Home from './Home';
 
 const Results = ({ match, history }) => {
 
