@@ -10,7 +10,6 @@ export default class Player {
     this.id = id;
   }
   show() {
-    console.log('SHOW');
     this.p.noStroke();
     this.p.fill(200);
     this.p.rect(this.x * this.xPos, this.y * (26 - this.yPos) + this.y, this.h, this.w);

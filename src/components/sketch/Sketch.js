@@ -4,10 +4,7 @@ import Maze from './Maze.js';
 export default function sketch(p) {
 
   let players = null;
-
   let maze;
-  // let end;
-  let newPlayers = null;
   let playerPositions = null;
   let cellMap = null;
 
@@ -31,7 +28,6 @@ export default function sketch(p) {
 
   p.myCustomRedrawAccordingToNewPropsHandler = (newProps) => {
     if(newProps.players) {
-      console.log('new data');
       players = newProps.players;
       playerPositions = players.reduce((acc, val) => {
         acc[val.userId] = { x: val.xPos };
