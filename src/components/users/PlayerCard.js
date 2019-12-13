@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../styles/PlayerCard.css';
-
+import check from '../../assets/img/check.png';
+import x from '../../assets/img/x.png';
 
 const PlayerCard = ({ name, color, symbol, ready }) => {
   console.log('TEST LOG****', ready);
@@ -16,11 +17,10 @@ const PlayerCard = ({ name, color, symbol, ready }) => {
         <div className={finalReady} style={{ backgroundColor: color }}>
           <div>{symbol}</div>
         </div>
-        <img className={finalCheck} src={ready ? 'src/assets/img/check.png' : 'src/assets/img/x.png'}></img>
+        <img className={finalCheck} src={ready ? check : x}></img>
       </div>
     </div>
   );
-
 };
 
 PlayerCard.propTypes = {

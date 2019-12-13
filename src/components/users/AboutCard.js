@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 const AboutCard = ({ name, image, desc }) => {
-
 
   return (
     <>
@@ -12,7 +10,6 @@ const AboutCard = ({ name, image, desc }) => {
       <p>{desc}</p>
     </>
   );
-
 };
 
 AboutCard.propTypes = {

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { useGameState } from '../socket';
 import useGameEmitters from '../components/hooks/gameState';
 import styles from '../components/styles/P5Wrapper.css';
-
+import outruntheempire from '../assets/sound/outruntheempire.mp3';
 
 const Game = ({ match, history }) => {
   console.log(match.params.roomId);
@@ -47,7 +47,7 @@ const Game = ({ match, history }) => {
   return (
     <div className={styles.P5WrapperTop}>
       <P5Wrapper sketch={sketch} players={eventState.room.players} cellMap={eventState.room.cellMap} />
-      <audio src='../src/assets/sound/outruntheempire.mp3' controls autoPlay />
+      <audio src={outruntheempire} controls autoPlay />
     </div>
   );
 };
