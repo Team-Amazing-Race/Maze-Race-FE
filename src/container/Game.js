@@ -4,6 +4,7 @@ import sketch from '../components/sketch/Sketch';
 import PropTypes from 'prop-types';
 import { useGameState } from '../socket';
 import useGameEmitters from '../components/hooks/gameState';
+import styles from '../components/styles/P5Wrapper.css';
 
 
 const Game = ({ match, history }) => {
@@ -16,16 +17,16 @@ const Game = ({ match, history }) => {
 
   const keyDownListener = (event) => {
     const keyName = event.key;
-    if(keyName === 'ArrowUp') {
+    if (keyName === 'ArrowUp') {
       movePlayer({ dir: 'up', room: eventState.room.name, userId: eventState.userId });
     }
-    if(keyName === 'ArrowDown') {
+    if (keyName === 'ArrowDown') {
       movePlayer({ dir: 'down', room: eventState.room.name, userId: eventState.userId });
     }
-    if(keyName === 'ArrowRight') {
+    if (keyName === 'ArrowRight') {
       movePlayer({ dir: 'right', room: eventState.room.name, userId: eventState.userId });
     }
-    if(keyName === 'ArrowLeft') {
+    if (keyName === 'ArrowLeft') {
       movePlayer({ dir: 'left', room: eventState.room.name, userId: eventState.userId });
     }
   };
@@ -40,10 +41,10 @@ const Game = ({ match, history }) => {
 
 
   return (
-    <>
-      <h1>GAME</h1>
+    <div className={styles.P5WrapperTop}>
+      <h1>Players go here</h1>
       <P5Wrapper sketch={sketch} players={eventState.room.players} cellMap={eventState.room.cellMap} />
-    </>
+    </div>
   );
 };
 
