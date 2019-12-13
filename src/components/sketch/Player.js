@@ -8,8 +8,8 @@ export default class Player {
     this.yPos = yPos;
     this.p = p;
     this.id = id;
-    this.color = color;
-    this.symbol = symbol;
+    this.color = color || 'ffffff';
+    this.symbol = symbol || '?';
   }
   show() {
     this.p.noStroke();

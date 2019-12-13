@@ -15,6 +15,7 @@ export default class Maze {
     this.p.stroke(0);
     this.p.fill(255);
 
+    let symbol = null;
     let cell = 0;
     for(let col = 0; col < this.w; col++) {
 
@@ -24,9 +25,14 @@ export default class Maze {
         let cellY = (row * (this.cellH)) + this.y;
 
         let color = '#1919A6';
-        if(cell === 312) color = 0;
+        if(cell === 312) {
+          color = 255;
+          symbol = '★';
+        } else {
+          symbol = null;
+        }
 
-        this.makeCell(this.cellMap[cell], cellX, cellY, this.cellH, this.cellW, color);
+        this.makeCell(this.cellMap[cell], cellX, cellY, this.cellH, this.cellW, color, symbol);
 
         cell++;
       }
@@ -34,7 +40,7 @@ export default class Maze {
 
   }
 
-  makeCell(cellData, x, y, w, h, color) {
+  makeCell(cellData, x, y, w, h, color, symbol) {
 
     let exits = Object.keys(cellData.exits);
     let wallE = { x1: x + w, y1: y, x2: x + w, y2: y + h };
@@ -51,6 +57,11 @@ export default class Maze {
     this.p.noStroke();
     this.p.fill(color);
     this.p.rect(x, y, w, h);
+
+    if(symbol) {
+      this.p.fill(0);
+      this.p.text(symbol, x + 5, y + 20);
+    }
 
     Object.values(walls).forEach(wall => {
       this.p.strokeWeight(3.5);
