@@ -1,8 +1,3 @@
-@font-face {
-  font-family: "joystix";
-  src: url('../../assets/fonts/joystix.ttf')
-  }
-
 .AboutElements {
   display: flex;
   flex-direction: column;
