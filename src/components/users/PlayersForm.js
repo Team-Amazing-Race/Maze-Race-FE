@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styles from '../styles/PlayersForm.css';
 
 const PlayersForm = ({ handleSubmit, type }) => {
-
   const [players, setPlayers] = useState('');
 
   return (
@@ -13,7 +12,6 @@ const PlayersForm = ({ handleSubmit, type }) => {
       <button>Start</button>
     </form>
   );
-
 };
 
 PlayersForm.propTypes = {

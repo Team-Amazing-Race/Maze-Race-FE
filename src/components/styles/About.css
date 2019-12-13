@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  
 
   h2 {
     font-size: 4em;
@@ -25,7 +24,6 @@
         flex-direction: column;
         width: 30vw;
         align-items: center;
-
 
       h3 {
         font-size: 2.5em;

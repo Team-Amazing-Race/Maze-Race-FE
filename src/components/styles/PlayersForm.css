@@ -5,18 +5,18 @@
   justify-content: center;
   align-items: center;
   margin: 0;
-}
-
-.PlayerNumber {
-  width: 10vw;
-  height: 6vh;
-  margin: 1vh;
-  font-family: "KARNIVOT";
-  font-size: 5vh;
-  text-align: center;
-  color:#00c3ff;
-  background: rgb(0, 0, 0);
-  outline-color: #ff00ee;
-  border: 1px solid white;
-  border-radius: 2%;
+  
+  .PlayerNumber {
+    width: 10vw;
+    height: 6vh;
+    margin: 13vh 0vw 0vh 0vw;
+    font-family: "KARNIVOT";
+    font-size: 5vh;
+    text-align: center;
+    color:#00c3ff;
+    background: rgb(0, 0, 0);
+    outline-color: #ff00ee;
+    border: 1px solid white;
+    border-radius: 2%;
+  }
 }
