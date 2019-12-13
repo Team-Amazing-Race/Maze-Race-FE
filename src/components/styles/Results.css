@@ -1,0 +1,9 @@
+.Results {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  border: red solid 1px;
+  width: 20vw;
+
+
+}
