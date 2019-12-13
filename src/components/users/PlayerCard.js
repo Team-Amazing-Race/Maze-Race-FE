@@ -6,13 +6,18 @@ import styles from '../styles/PlayerCard.css';
 const PlayerCard = ({ name, color, symbol, ready }) => {
   console.log('TEST LOG****', ready);
   
+  let finalReady = ready ? `${styles.PlayerReady} ${styles.PlayerReadyFinal}` : styles.PlayerReady;
+  let finalCheck = ready ? `${styles.NotReady} ${styles.Ready}` : styles.NotReady;
+
   return (
     <div className={styles.PlayerCard}>
       <p>{name}</p>
-      <div data-status={{ ready }} className={styles.PlayerReady} style={{ backgroundColor: color }}>
-        <div>{symbol}</div>
+      <div className={styles.PlayerSymbols}>
+        <div className={finalReady} style={{ backgroundColor: color }}>
+          <div>{symbol}</div>
+        </div>
+        <img className={finalCheck} src={ready ? 'src/assets/img/check.png' : 'src/assets/img/x.png'}></img>
       </div>
-      <img src={ready ? 'src/assets/img/check.png' : 'src/assets/img/x.png'}></img>
     </div>
   );
 
