@@ -17,16 +17,16 @@ const Game = ({ match, history }) => {
   const keyDownListener = (event) => {
     const keyName = event.key;
     if(keyName === 'ArrowUp') {
-      movePlayer({ dir: 'up', name: eventState.name, room: eventState.inRoom });
+      movePlayer({ dir: 'up', room: eventState.room.name, userId: eventState.userId });
     }
     if(keyName === 'ArrowDown') {
-      movePlayer({ dir: 'down', name: eventState.name, room: eventState.inRoom });
+      movePlayer({ dir: 'down', room: eventState.room.name, userId: eventState.userId });
     }
     if(keyName === 'ArrowRight') {
-      movePlayer({ dir: 'right', name: eventState.name, room: eventState.inRoom });
+      movePlayer({ dir: 'right', room: eventState.room.name, userId: eventState.userId });
     }
     if(keyName === 'ArrowLeft') {
-      movePlayer({ dir: 'left', name: eventState.name, room: eventState.inRoom });
+      movePlayer({ dir: 'left', room: eventState.room.name, userId: eventState.userId });
     }
   };
 

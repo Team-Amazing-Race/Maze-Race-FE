@@ -19,7 +19,7 @@ export default function sketch(p) {
     p.createCanvas(800, 800);
 
     if(state) {
-      maze = new Maze(p, 20, 20, 20, 20, state.room.cellMap);
+      maze = new Maze(p, 25, 25, 20, 20, state.room.cellMap);
     } else {
       setTimeout(() => {
         p.setup();

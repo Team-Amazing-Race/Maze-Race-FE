@@ -24,9 +24,6 @@ const Lobby = ({ match, history }) => {
     enterName({ name: name, color: color, symbol: symbol, ready: ready, userId: eventState.userId });
   };
 
-  const colors = ['#FF0000', '#FE8300', '#FFF800', '#4AF441', '#56F0F9', '#0086FF', '#5E28FF', '#FF00F9'];
-  const symbols = ['@', 'Δ', 'Ø', 'λ', 'π', 'µ', 'ß', 'Σ'];
-
   useEffect(() => {
 
     if(eventState.room.runners && eventState.room.seats && eventState.room.runners === eventState.room.seats) {
