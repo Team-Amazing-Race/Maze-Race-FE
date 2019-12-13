@@ -15,6 +15,7 @@
     margin-bottom: 5vh;
   }
 
-
-
+  audio {
+    display: none;
+  }
 }
