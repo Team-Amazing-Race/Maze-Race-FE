@@ -31,7 +31,6 @@ export default function sketch(p) {
 
   p.myCustomRedrawAccordingToNewPropsHandler = (newProps) => {
     if(newProps.players) {
-      console.log('new data');
       players = newProps.players;
       playerPositions = players.reduce((acc, val) => {
         acc[val.userId] = { x: val.xPos };
@@ -56,7 +55,6 @@ export default function sketch(p) {
     }
     // //edit for all players
     if(playerPositions) {
-      console.log(playerPositions);
       players.map(playerObj => {
         let x = playerPositions[playerObj.userId].x;
         let y = playerPositions[playerObj.userId].y;
