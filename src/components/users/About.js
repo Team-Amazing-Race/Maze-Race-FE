@@ -6,18 +6,18 @@ import styles from '../styles/About.css';
 const About = () => {
   const aboutElements = aboutProps.map(about => {    
     return (
-      <li key={about.name + about.img + about.desc}>
+      <div key={about.name + about.img + about.desc}>
         <AboutCard {...about}/>
-      </li>
+      </div>
     );
   });
 
   return (
     <div className={styles.AboutElements}>
       <h2>Meet The Developers</h2>
-      <ul>
+      <div className={styles.aboutContainer}>
         {aboutElements}
-      </ul>
+      </div>
     </div>
   );
 };
