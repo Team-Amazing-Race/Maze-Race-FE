@@ -41,7 +41,7 @@ export default class Maze {
         let cellY = (row * (this.cellH)) + this.y;
 
         let color = 255;
-        if(cell === ((this.h * this.w) / 2) + this.h / 2) color = 155;
+        if(cell === 312) color = 155;
 
         this.makeCell(this.cellMap[cell], cellX, cellY, this.cellH, this.cellW, color);
 
