@@ -6,13 +6,13 @@
   flex-wrap: wrap;
 
   h2 {
-    font-size: 4em;
-    font-family: "KARNIVOT";
+    font-size: 8em;
+    font-family: "Maze";
     background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
     background: linear-gradient(to top, #ff00ee, #00c3ff); 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-top: 10vh;
+    margin-top: 6vh;
   }
 
   .aboutContainer {
@@ -33,7 +33,7 @@
         background: linear-gradient(to top, #ff00ee, #00c3ff); 
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin: 6vh 0vw 1vh 0vw;
+        margin: 3vh 0vw 1vh 0vw;
       }
   
       img {
