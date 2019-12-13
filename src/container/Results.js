@@ -8,7 +8,7 @@ const Results = ({ match, history }) => {
   const eventState = useGameState();
 
   return (
-    <ResultMessage name={eventState.winner.} winner={} />
+    <ResultMessage name={'Jose'} winner={true} />
   );
 };
 
