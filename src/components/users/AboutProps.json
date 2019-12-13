@@ -11,12 +11,12 @@
   },
   {
     "name": "Sam Jespersen",
-    "image": "src/assets/img/sam.jpg",
-    "desc": "Morty at heart, Jerry in practice."
+    "image": "src/assets/img/sam.gif",
+    "desc": "Full-stack JavaScript developer with a background in cyber-crime investigation and analysis. Driven to create accessible tools that help people accomplish their goals."
   },
   {
     "name": "Jose Ojeda",
     "image": "src/assets/img/jose.jpg",
-    "desc": "Great Hair, Dad Jokes, Karaoke, Cardigan, Gator Mode."
+    "desc": "Software developer who believes good software design always keeps the end-user in mind and is as clean as it is clever. I have a focus on finding client centric solutions that can affect meaningful change rooted in six years experience throughout multiple roles in the insurance industry."
   }
 ]
