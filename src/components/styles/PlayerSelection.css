@@ -1,7 +1,4 @@
-@font-face {
-  font-family: "Roboto-Bold"; 
-  src: url('../../assets/fonts/Roboto-Bold.ttf')
-}
+
 
 .PlayerForm {
   display: flex;
