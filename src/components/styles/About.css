@@ -53,6 +53,7 @@
         text-align: center;
         overflow: normal;
         margin: 1vh 1vw;
+        word-spacing: -0.3em;
       }
     }
   }
