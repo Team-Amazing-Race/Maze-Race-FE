@@ -3,16 +3,21 @@ import Maze from './Maze.js';
 
 export default function sketch(p) {
 
+  let cellSize = 25;
+  let playerPos = 25;
+  let playerSize = 20;
+
+
   let players = null;
   let maze;
   let playerPositions = null;
   let cellMap = null;
 
   p.setup = () => {
-    p.createCanvas(800, 800);
+    p.createCanvas(680, 680);
 
     if(players && playerPositions) {
-      maze = new Maze(p, 25, 25, 20, 20, cellMap);
+      maze = new Maze(p, 25, 25, cellSize, cellSize, cellMap);
     } else {
       setTimeout(() => {
         p.setup();
@@ -45,18 +50,16 @@ export default function sketch(p) {
 
 
   p.draw = () => {
-    p.background(220);
 
     if(maze && maze.cellMap) {
       maze.showCells();
     }
     // //edit for all players
     if(playerPositions) {
-      console.log(playerPositions);
       players.map(playerObj => {
         let x = playerPositions[playerObj.userId].x;
         let y = playerPositions[playerObj.userId].y;
-        return new Player(p, x, y, 20, 20, 20, 20, playerObj.userId).show();
+        return new Player(p, x, y, playerPos, playerPos, playerSize, playerSize, playerObj.userId, playerObj.color, playerObj.symbol).show();
       });
 
     }
