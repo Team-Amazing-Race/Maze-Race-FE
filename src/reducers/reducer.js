@@ -1,8 +1,6 @@
 export const reducer = (state, { type, payload }) => {
   switch(type) {
 
-    case 'SET_USER_ID_DONE':
-      return { ...state, userId: payload };
     case 'ROOM_JOIN_DONE': {
       return { ...state, room: { ...state.room, players: payload.playersInRoom } };
     }
@@ -15,9 +13,6 @@ export const reducer = (state, { type, payload }) => {
     case 'ROOM_JOIN_PRIVATE_DONE':
       return { ...state, userId: payload };
 
-    case 'ROOM_DISCONNECT': {
-      return state;
-    }
     case 'ENTER_NAME_DONE': {
       return { ...state, room: { ...state.room, runners: state.room.runners + 1, players: payload } };
     }

@@ -13,7 +13,6 @@ render(
       'MOVE_PLAYER_DONE',
       'ROOM_JOIN_PRIVATE_DONE',
       'ROOM_CREATE_DONE',
-      'SET_USER_ID_DONE',
       'READY_DONE',
       'WINNER',
       'RESET_DONE']
