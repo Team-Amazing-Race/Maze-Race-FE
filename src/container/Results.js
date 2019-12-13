@@ -9,18 +9,15 @@ const Results = ({ match, history }) => {
   const eventState = useGameState();
 
   return (
-    <>
-      <div className={styles.Results}>
-        <ResultMessage name={'Jose'} winner={true} />
-      </div>
-    </>
-
-        );
-      };
+    <div className={styles.Results}>
+      <ResultMessage name={'Jose'} winner={true} />
+    </div>
+  );
+};
 
 Results.propTypes = {
-          match: PropTypes.obj,
+  match: PropTypes.obj,
   history: PropTypes.object.isRequired
 };
- 
+
 export default Results;
