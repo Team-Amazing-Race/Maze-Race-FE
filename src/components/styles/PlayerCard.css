@@ -1,8 +1,3 @@
-@font-face {
-  font-family: "joystix"; 
-  src: url('../../assets/fonts/joystix.ttf')
-}
-
 .PlayerCard {
   display: flex;
   flex-direction: row;
@@ -23,11 +18,10 @@
     box-shadow: 0 0 1vh 1px #73F91C;
   }
 
-   img{
+  img{
     height: 5vh;
     width: 5vw;
   }
-
 
   p {
     color: white;
