@@ -9,22 +9,6 @@ export default class Maze {
     this.cellMap = JSON.parse(cellMap);
     this.p = p;
   }
-  // transfer to state
-  // getCellInfo(x, y) {
-
-  //   let cell = this.cellMap.find(cell => {
-  //     return cell.coordinates.x === x && cell.coordinates.y === y;
-  //   });
-
-  //   return Object.values(cell.exits);
-
-  // }
-
-  // //transfer to state
-  // getEnd() {
-  //   let winningCell = this.cellMap[((this.h * this.w) / 2) + this.h / 2];
-  //   return [winningCell.coordinates.x, winningCell.coordinates.y];
-  // }
 
   showCells() {
 
