@@ -9,8 +9,9 @@ export default function useGameEmitters() {
   const setUserId = useEmitEvent('SET_USER_ID');
   const joinRoomPrivate = useEmitEvent('ROOM_JOIN_PRIVATE');
   const setReady = useEmitEvent('READY');
+  const resetGame = useEmitEvent('RESET');
 
-  return { createRoom, enterName, movePlayer, joinRoom, setUserId, joinRoomPrivate, setReady };
+  return { createRoom, enterName, movePlayer, joinRoom, setUserId, joinRoomPrivate, setReady, resetGame };
 
 }
 

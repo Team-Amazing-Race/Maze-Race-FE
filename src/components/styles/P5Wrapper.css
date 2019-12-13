@@ -8,6 +8,7 @@
   h1 {
     font-size: 4em;
     font-family: "KARNIVOT";
+    user-select: none;
     background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
     background: linear-gradient(to top, #ff00ee, #00c3ff); 
     -webkit-background-clip: text;

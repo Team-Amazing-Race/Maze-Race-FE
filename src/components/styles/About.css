@@ -29,6 +29,7 @@
         font-size: 2.5em;
         font-family: "KARNIVOT";
         text-align: center;
+        user-select: none;
         background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
         background: linear-gradient(to top, #ff00ee, #00c3ff); 
         -webkit-background-clip: text;

@@ -5,11 +5,9 @@ import PropTypes from 'prop-types';
 import { useGameState } from '../socket';
 import useGameEmitters from '../components/hooks/gameState';
 import styles from '../components/styles/P5Wrapper.css';
-
+import outruntheempire from '../assets/sound/outruntheempire.mp3';
 
 const Game = ({ match, history }) => {
-  console.log(match.params.roomId);
-  
   // State
   const { movePlayer } = useGameEmitters();
   const eventState = useGameState();

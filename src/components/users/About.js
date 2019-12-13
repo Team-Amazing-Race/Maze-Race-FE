@@ -6,7 +6,7 @@ import styles from '../styles/About.css';
 const About = () => {
   const aboutElements = aboutProps.map(about => {    
     return (
-      <div key={about.name + about.img + about.desc}>
+      <div key={about.name + about.image + about.desc}>
         <AboutCard {...about}/>
       </div>
     );

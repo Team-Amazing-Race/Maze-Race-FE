@@ -3,14 +3,21 @@ import PropTypes from 'prop-types';
 import ResultMessage from '../components/users/ResultMessage';
 import { useGameState } from '../socket';
 import styles from '../components/styles/Results.css';
+import useGameEmitters from '../components/hooks/gameState';
 
-const Results = ({ match, history }) => {
+const Results = ({ history }) => {
 
+  const { resetGame } = useGameEmitters();
   const eventState = useGameState();
-
+ 
+  const handleReset = () => {
+    resetGame(eventState.room.name);
+    history.push('/');
+  };
+  
   return (
     <div className={styles.Results}>
-      <ResultMessage name={'Jose'} winner={true} />
+      <ResultMessage handleSubmit={handleReset} name={eventState.winner.name} winner={eventState.winner.userId} userId={eventState.userId} />
     </div>
   );
 };

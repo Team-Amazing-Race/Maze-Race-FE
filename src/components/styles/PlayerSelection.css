@@ -76,6 +76,7 @@
     border-radius: 2%;
     font-size: 3.8vh;
     font-family: "KARNIVOT";
+    user-select: none;
     -moz-box-shadow:    inset 0 0 5px 1px #000000;
     -webkit-box-shadow: inset 0 0 5px 1px #000000;
     box-shadow:         inset 0 0 5px 1px #000000;

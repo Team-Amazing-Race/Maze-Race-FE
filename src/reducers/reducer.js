@@ -30,6 +30,18 @@ export const reducer = (state, { type, payload }) => {
     case 'WINNER': {
       return { ...state, winner: payload };
     }
+    case 'RESET_DONE': {
+      return { ...state, 
+        ready: false, 
+        room: { 
+          players: [],
+          runners: 0,
+          seats: null,
+          name: null,
+          cellMap: null }, 
+        userId: null,  
+        winner: null  };
+    }
     default:
       return state;
   }

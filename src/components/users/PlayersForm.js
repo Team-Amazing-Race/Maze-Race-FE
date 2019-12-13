@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from '../styles/PlayersForm.css';
 
-const PlayersForm = ({ handleSubmit, type }) => {
+const PlayersForm = ({ handleSubmit }) => {
   const [players, setPlayers] = useState('');
 
   return (
@@ -15,8 +15,7 @@ const PlayersForm = ({ handleSubmit, type }) => {
 };
 
 PlayersForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired
+  handleSubmit: PropTypes.func.isRequired
 };
 
 export default PlayersForm;
