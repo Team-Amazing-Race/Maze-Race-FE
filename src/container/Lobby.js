@@ -41,6 +41,10 @@ const Lobby = ({ match, history }) => {
   }, [eventState.ready]);
 
 
+
+  const colors = ['#FF0000', '#FE8300', '#FFF800', '#4AF441', '#56F0F9', '#0086FF', '#5E28FF', '#FF00F9'];
+  const symbols = ['@', 'Ø', 'Δ', 'λ', 'π', 'µ', 'ß', 'Σ'];
+
   return (
     <>
       <PlayerSelection handleSubmit={handleName} colors={colors} symbols={symbols} />
