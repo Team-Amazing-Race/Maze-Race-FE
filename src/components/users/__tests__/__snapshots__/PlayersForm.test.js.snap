@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayersForm component renders PlayersForm 1`] = `
+<form
+  className="PlayersForm"
+  onSubmit={[Function]}
+>
+  <input
+    className="PlayerNumber"
+    max="8"
+    min="1"
+    name="quantity"
+    onChange={[Function]}
+    type="number"
+    value=""
+  />
+  <br />
+  <button>
+    Start
+  </button>
+</form>
+`;

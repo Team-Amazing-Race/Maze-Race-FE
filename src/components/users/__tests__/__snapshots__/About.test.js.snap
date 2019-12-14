@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About component renders About 1`] = `
+<div
+  className="AboutElements"
+>
+  <h2>
+    Meet The Developers
+  </h2>
+  <div
+    className="aboutContainer"
+  >
+    <div
+      key="Dylan Corvidaehttps://raw.githubusercontent.com/Team-Amazing-Race/Maze-Race-FE/dev/src/assets/img/dylan.jpgAn empathic and eclectic non-binary software developer, queer circus performer, punk/metal musician, respectful parent & poly partner. My hobbies include: dance trapeze, hand-balancing, connecting to nature, playing and making music on guitar, piano, singing in choirs and screaming in bands."
+    >
+      <AboutCard
+        desc="An empathic and eclectic non-binary software developer, queer circus performer, punk/metal musician, respectful parent & poly partner. My hobbies include: dance trapeze, hand-balancing, connecting to nature, playing and making music on guitar, piano, singing in choirs and screaming in bands."
+        image="https://raw.githubusercontent.com/Team-Amazing-Race/Maze-Race-FE/dev/src/assets/img/dylan.jpg"
+        name="Dylan Corvidae"
+      />
+    </div>
+    <div
+      key="Kamran Alihttps://raw.githubusercontent.com/Team-Amazing-Race/Maze-Race-FE/dev/src/assets/img/kam.jpgMy name is Kam, a full-stack software developer that has proficiency in back-end Javascript node packages like express, and the front-end framework react/redux. I also have a strong background in Digital Design. I am very passionate about clean code and design, because I really want communication between the user and the developers clear."
+    >
+      <AboutCard
+        desc="My name is Kam, a full-stack software developer that has proficiency in back-end Javascript node packages like express, and the front-end framework react/redux. I also have a strong background in Digital Design. I am very passionate about clean code and design, because I really want communication between the user and the developers clear."
+        image="https://raw.githubusercontent.com/Team-Amazing-Race/Maze-Race-FE/dev/src/assets/img/kam.jpg"
+        name="Kamran Ali"
+      />
+    </div>
+    <div
+      key="Sam Jespersenhttps://raw.githubusercontent.com/Team-Amazing-Race/Maze-Race-FE/dev/src/assets/img/sam.gifFull-stack JavaScript developer with a background in cyber-crime investigation and analysis. Driven to create accessible tools that help people accomplish their goals."
+    >
+      <AboutCard
+        desc="Full-stack JavaScript developer with a background in cyber-crime investigation and analysis. Driven to create accessible tools that help people accomplish their goals."
+        image="https://raw.githubusercontent.com/Team-Amazing-Race/Maze-Race-FE/dev/src/assets/img/sam.gif"
+        name="Sam Jespersen"
+      />
+    </div>
+    <div
+      key="Jose Ojedahttps://raw.githubusercontent.com/Team-Amazing-Race/Maze-Race-FE/dev/src/assets/img/jose.jpgSoftware developer who believes good software design always keeps the end-user in mind and is as clean as it is clever. I have a focus on finding client centric solutions that can affect meaningful change rooted in six years experience throughout multiple roles in the insurance industry."
+    >
+      <AboutCard
+        desc="Software developer who believes good software design always keeps the end-user in mind and is as clean as it is clever. I have a focus on finding client centric solutions that can affect meaningful change rooted in six years experience throughout multiple roles in the insurance industry."
+        image="https://raw.githubusercontent.com/Team-Amazing-Race/Maze-Race-FE/dev/src/assets/img/jose.jpg"
+        name="Jose Ojeda"
+      />
+    </div>
+  </div>
+</div>
+`;
