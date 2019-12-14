@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayerCard component renders PlayerCard 1`] = `
+<div
+  className="PlayerCard"
+>
+  <p />
+  <div
+    className="PlayerSymbols"
+  >
+    <div
+      className="PlayerReady"
+      style={
+        Object {
+          "backgroundColor": undefined,
+        }
+      }
+    >
+      <div />
+    </div>
+    <img
+      className="NotReady"
+      src="/path/image"
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultMessage component renders ResultMessage 1`] = `
+<div
+  className="ResultsMessage"
+>
+  <h1>
+    You win!
+  </h1>
+  <button
+    onClick={[Function]}
+  >
+    Play Again?
+  </button>
+  <Link
+    to="/about"
+  >
+    <h3>
+      About the Developers
+    </h3>
+  </Link>
+</div>
+`;
