@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutCard component renders AboutCard 1`] = `
+<Fragment>
+  <h3 />
+  <img />
+  <p />
+</Fragment>
+`;
