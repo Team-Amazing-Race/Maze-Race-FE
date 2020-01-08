@@ -11,6 +11,7 @@
     user-select: none;
     background: -webkit-linear-gradient(bottom, #ff00ee, #00c3ff);
     background: linear-gradient(to top, #ff00ee, #00c3ff); 
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 5vh;
