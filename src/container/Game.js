@@ -7,25 +7,72 @@ import useGameEmitters from '../components/hooks/gameState';
 import styles from '../components/styles/P5Wrapper.css';
 import outruntheempire from '../assets/sound/outruntheempire.mp3';
 
+
 const Game = ({ match, history }) => {
   // State
   const { movePlayer } = useGameEmitters();
   const eventState = useGameState();
 
+  const player = eventState.room.players.find(p => {
+    return p.userId === eventState.userId;
+  });
+
+  let xPos = player.xPos;
+  let yPos = player.yPos;
+
+  const playerCanMoveTo = (direction) => {
+
+    const moves = {
+      'up': { xPos: 0, yPos: 1 },
+      'down': { xPos: 0, yPos: -1 },
+      'left': { xPos: -1, yPos: 0 },
+      'right': { xPos: 1, yPos: 0 }
+    };
+
+    const dir = moves[direction];
+
+    const newX = xPos + dir.xPos;
+    const newY = yPos + dir.yPos;
+
+    const cell = JSON.parse(eventState.room.cellMap).find(cell => {
+      return cell.coordinates.x === xPos && cell.coordinates.y === yPos;
+    });
+
+    const dirBool = Object.values(cell.exits).some(exit => {
+      return exit.x === newX && exit.y === newY;
+    });
+
+    if(dirBool) {
+      xPos = newX;
+      yPos = newY;
+    }
+
+    return dirBool;
+
+  };
+
   //Keypress logic
   const keyDownListener = (event) => {
     const keyName = event.key;
     if(keyName === 'ArrowUp') {
-      movePlayer({ dir: 'up', room: eventState.room.name, userId: eventState.userId });
+      if(playerCanMoveTo('up')) {
+        movePlayer({ dir: 'up', room: eventState.room.name, userId: eventState.userId, x: xPos, y: yPos });
+      }
     }
     if(keyName === 'ArrowDown') {
-      movePlayer({ dir: 'down', room: eventState.room.name, userId: eventState.userId });
+      if(playerCanMoveTo('down')) {
+        movePlayer({ dir: 'down', room: eventState.room.name, userId: eventState.userId, x: xPos, y: yPos });
+      }
     }
     if(keyName === 'ArrowRight') {
-      movePlayer({ dir: 'right', room: eventState.room.name, userId: eventState.userId });
+      if(playerCanMoveTo('right')) {
+        movePlayer({ dir: 'right', room: eventState.room.name, userId: eventState.userId, x: xPos, y: yPos });
+      }
     }
     if(keyName === 'ArrowLeft') {
-      movePlayer({ dir: 'left', room: eventState.room.name, userId: eventState.userId });
+      if(playerCanMoveTo('left')) {
+        movePlayer({ dir: 'left', room: eventState.room.name, userId: eventState.userId, x: xPos, y: yPos });
+      }
     }
   };
 
